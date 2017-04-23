@@ -1,0 +1,413 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="FinalBuild|Win32">
+      <Configuration>FinalBuild</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <SccProjectName />
+    <SccLocalPath />
+    <ProjectGuid>{EFB7F6DA-7315-4FE5-8FAB-73AF9394B838}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='FinalBuild|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='FinalBuild|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.Cpp.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.Cpp.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.Cpp.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>.\..\Release\</OutDir>
+    <IntDir>.\Release\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>.\..\Debug\</OutDir>
+    <IntDir>.\Debug\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+    <IgnoreImportLibrary>true</IgnoreImportLibrary>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='FinalBuild|Win32'">
+    <OutDir>.\FinalBuild\</OutDir>
+    <IntDir>.\FinalBuild\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <StringPooling>true</StringPooling>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <Optimization>MaxSpeed</Optimization>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <WarningLevel>Level4</WarningLevel>
+      <AdditionalIncludeDirectories>..\ICARUS;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AssemblerListingLocation>.\Release\</AssemblerListingLocation>
+      <PrecompiledHeaderOutputFile>.\Release\game.pch</PrecompiledHeaderOutputFile>
+      <ObjectFileName>.\Release\</ObjectFileName>
+      <ProgramDataBaseFileName>.\Release\</ProgramDataBaseFileName>
+    </ClCompile>
+    <Midl>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <TypeLibraryName>.\..\Release\game.tlb</TypeLibraryName>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <TargetEnvironment>Win32</TargetEnvironment>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0409</Culture>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\..\Release\game.bsc</OutputFile>
+    </Bscmake>
+    <Link>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <LinkDLL>true</LinkDLL>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OutputFile>..\Release/efgamex86.dll</OutputFile>
+      <ImportLibrary>.\..\Release\efgamex86.lib</ImportLibrary>
+      <BaseAddress>0x20000000</BaseAddress>
+      <AdditionalDependencies>winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ModuleDefinitionFile>.\game.def</ModuleDefinitionFile>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <FunctionLevelLinking>false</FunctionLevelLinking>
+      <Optimization>Disabled</Optimization>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <WarningLevel>Level3</WarningLevel>
+      <MinimalRebuild>true</MinimalRebuild>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <AdditionalIncludeDirectories>..\ICARUS;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AssemblerListingLocation>.\Debug\</AssemblerListingLocation>
+      <BrowseInformation>true</BrowseInformation>
+      <PrecompiledHeaderOutputFile>.\Debug\game.pch</PrecompiledHeaderOutputFile>
+      <ObjectFileName>.\Debug\</ObjectFileName>
+      <ProgramDataBaseFileName>.\Debug\</ProgramDataBaseFileName>
+    </ClCompile>
+    <Midl>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <TypeLibraryName>.\..\Debug\game.tlb</TypeLibraryName>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <TargetEnvironment>Win32</TargetEnvironment>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0409</Culture>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>Debug/game.bsc</OutputFile>
+    </Bscmake>
+    <Link>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <LinkDLL>true</LinkDLL>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OutputFile>..\Debug/efgamex86.dll</OutputFile>
+      <ImportLibrary>.\..\Debug\efgamex86.lib</ImportLibrary>
+      <BaseAddress>0x20000000</BaseAddress>
+      <AdditionalDependencies>winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ModuleDefinitionFile>.\game.def</ModuleDefinitionFile>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='FinalBuild|Win32'">
+    <ClCompile>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <StringPooling>true</StringPooling>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <Optimization>MaxSpeed</Optimization>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <WarningLevel>Level4</WarningLevel>
+      <AdditionalIncludeDirectories>..\ICARUS;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_WINDOWS;WIN32;NDEBUG;FINAL_BUILD;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AssemblerListingLocation>.\FinalBuild\</AssemblerListingLocation>
+      <PrecompiledHeaderOutputFile>.\FinalBuild\game.pch</PrecompiledHeaderOutputFile>
+      <ObjectFileName>.\FinalBuild\</ObjectFileName>
+      <ProgramDataBaseFileName>.\FinalBuild\</ProgramDataBaseFileName>
+    </ClCompile>
+    <Midl>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <TypeLibraryName>.\FinalBuild\game.tlb</TypeLibraryName>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <TargetEnvironment>Win32</TargetEnvironment>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0409</Culture>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\FinalBuild\game.bsc</OutputFile>
+    </Bscmake>
+    <Link>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <LinkDLL>true</LinkDLL>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OutputFile>..\FinalBuild/efgamex86.dll</OutputFile>
+      <ImportLibrary>.\FinalBuild\efgamex86.lib</ImportLibrary>
+      <BaseAddress>0x20000000</BaseAddress>
+      <AdditionalDependencies>winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ModuleDefinitionFile>.\game.def</ModuleDefinitionFile>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\cgame\cg_camera.cpp" />
+    <ClCompile Include="..\cgame\cg_consolecmds.cpp" />
+    <ClCompile Include="..\cgame\cg_draw.cpp" />
+    <ClCompile Include="..\cgame\cg_drawtools.cpp" />
+    <ClCompile Include="..\cgame\cg_effects.cpp" />
+    <ClCompile Include="..\cgame\cg_ents.cpp" />
+    <ClCompile Include="..\cgame\cg_env.cpp" />
+    <ClCompile Include="..\cgame\cg_event.cpp" />
+    <ClCompile Include="..\cgame\cg_info.cpp" />
+    <ClCompile Include="..\cgame\cg_localents.cpp" />
+    <ClCompile Include="..\cgame\cg_main.cpp" />
+    <ClCompile Include="..\cgame\cg_marks.cpp" />
+    <ClCompile Include="..\cgame\cg_players.cpp" />
+    <ClCompile Include="..\cgame\cg_playerstate.cpp" />
+    <ClCompile Include="..\cgame\cg_predict.cpp" />
+    <ClCompile Include="..\cgame\cg_scoreboard.cpp" />
+    <ClCompile Include="..\cgame\cg_servercmds.cpp" />
+    <ClCompile Include="..\cgame\cg_snapshot.cpp" />
+    <ClCompile Include="..\cgame\cg_syscalls.cpp" />
+    <ClCompile Include="..\cgame\cg_text.cpp" />
+    <ClCompile Include="..\cgame\cg_view.cpp" />
+    <ClCompile Include="..\cgame\cg_weapons.cpp" />
+    <ClCompile Include="..\cgame\FX_avatar.cpp" />
+    <ClCompile Include="..\cgame\fx_borg.cpp" />
+    <ClCompile Include="..\cgame\FX_Compression.cpp" />
+    <ClCompile Include="..\cgame\fx_dreadnought.cpp" />
+    <ClCompile Include="..\cgame\FX_Grenade_Launcher.cpp" />
+    <ClCompile Include="..\cgame\fx_hunter_seeker.cpp" />
+    <ClCompile Include="..\cgame\fx_imod.cpp" />
+    <ClCompile Include="..\cgame\fx_lib.cpp" />
+    <ClCompile Include="..\cgame\FX_Memory.cpp" />
+    <ClCompile Include="..\cgame\fx_parasite.cpp" />
+    <ClCompile Include="..\cgame\FX_Phaser.cpp" />
+    <ClCompile Include="..\cgame\fx_primitive.cpp" />
+    <ClCompile Include="..\cgame\fx_proton.cpp" />
+    <ClCompile Include="..\cgame\fx_quantum.cpp" />
+    <ClCompile Include="..\cgame\fx_reaver.cpp" />
+    <ClCompile Include="..\cgame\fx_scavenger.cpp" />
+    <ClCompile Include="..\cgame\fx_scout_bot.cpp" />
+    <ClCompile Include="..\cgame\FX_Stasis.cpp" />
+    <ClCompile Include="..\cgame\fx_tetrion.cpp" />
+    <ClCompile Include="..\cgame\fx_transporter.cpp" />
+    <ClCompile Include="..\cgame\FX_Util.cpp" />
+    <ClCompile Include="..\cgame\FX_Vohrsoth.cpp" />
+    <ClCompile Include="..\Icarus\BlockStream.cpp" />
+    <ClCompile Include="..\Icarus\Instance.cpp" />
+    <ClCompile Include="..\Icarus\Sequence.cpp" />
+    <ClCompile Include="..\Icarus\Sequencer.cpp" />
+    <ClCompile Include="..\Icarus\TaskManager.cpp" />
+    <ClCompile Include="..\ui\gameinfo.cpp" />
+    <ClCompile Include="AI_Avatar.cpp" />
+    <ClCompile Include="AI_Borg.cpp" />
+    <ClCompile Include="AI_Etherian.cpp" />
+    <ClCompile Include="AI_Harvester.cpp" />
+    <ClCompile Include="AI_HeadBot.cpp" />
+    <ClCompile Include="AI_HirogenAlpha.cpp" />
+    <ClCompile Include="AI_HunterSeeker.cpp" />
+    <ClCompile Include="AI_Parasite.cpp" />
+    <ClCompile Include="AI_Reaver.cpp" />
+    <ClCompile Include="AI_Scavenger.cpp" />
+    <ClCompile Include="AI_ScoutBot.cpp" />
+    <ClCompile Include="AI_Species8472.cpp" />
+    <ClCompile Include="AI_Utils.cpp" />
+    <ClCompile Include="AI_Vohrsoth.cpp" />
+    <ClCompile Include="AI_WarriorBot.cpp" />
+    <ClCompile Include="bg_lib.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='FinalBuild|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="bg_misc.cpp" />
+    <ClCompile Include="bg_pangles.cpp" />
+    <ClCompile Include="bg_panimate.cpp" />
+    <ClCompile Include="bg_pmove.cpp" />
+    <ClCompile Include="bg_slidemove.cpp" />
+    <ClCompile Include="g_active.cpp" />
+    <ClCompile Include="g_ambients.cpp" />
+    <ClCompile Include="g_boltons.cpp" />
+    <ClCompile Include="g_breakable.cpp" />
+    <ClCompile Include="g_camera.cpp" />
+    <ClCompile Include="g_client.cpp" />
+    <ClCompile Include="g_cmds.cpp" />
+    <ClCompile Include="g_combat.cpp" />
+    <ClCompile Include="g_functions.cpp" />
+    <ClCompile Include="g_fx.cpp" />
+    <ClCompile Include="g_ICARUS.cpp" />
+    <ClCompile Include="g_infostringLoad.cpp" />
+    <ClCompile Include="g_itemLoad.cpp" />
+    <ClCompile Include="g_items.cpp" />
+    <ClCompile Include="g_main.cpp" />
+    <ClCompile Include="g_mem.cpp" />
+    <ClCompile Include="g_misc.cpp" />
+    <ClCompile Include="g_misc_model.cpp" />
+    <ClCompile Include="g_missile.cpp" />
+    <ClCompile Include="g_mover.cpp" />
+    <ClCompile Include="g_nav.cpp" />
+    <ClCompile Include="g_navigator.cpp" />
+    <ClCompile Include="g_object.cpp" />
+    <ClCompile Include="g_objectives.cpp" />
+    <ClCompile Include="g_ref.cpp" />
+    <ClCompile Include="g_roff.cpp" />
+    <ClCompile Include="g_savegame.cpp" />
+    <ClCompile Include="g_session.cpp" />
+    <ClCompile Include="g_spawn.cpp" />
+    <ClCompile Include="g_squad.cpp" />
+    <ClCompile Include="g_svcmds.cpp" />
+    <ClCompile Include="g_target.cpp" />
+    <ClCompile Include="G_Timer.cpp" />
+    <ClCompile Include="g_trigger.cpp" />
+    <ClCompile Include="g_turret.cpp" />
+    <ClCompile Include="g_usable.cpp" />
+    <ClCompile Include="g_utils.cpp" />
+    <ClCompile Include="g_weapon.cpp" />
+    <ClCompile Include="g_weaponLoad.cpp" />
+    <ClCompile Include="NPC.cpp" />
+    <ClCompile Include="NPC_behavior.cpp" />
+    <ClCompile Include="NPC_combat.cpp" />
+    <ClCompile Include="NPC_formation.cpp" />
+    <ClCompile Include="NPC_goal.cpp" />
+    <ClCompile Include="NPC_misc.cpp" />
+    <ClCompile Include="NPC_move.cpp" />
+    <ClCompile Include="NPC_reactions.cpp" />
+    <ClCompile Include="NPC_senses.cpp" />
+    <ClCompile Include="NPC_sounds.cpp" />
+    <ClCompile Include="NPC_spawn.cpp" />
+    <ClCompile Include="NPC_stats.cpp" />
+    <ClCompile Include="NPC_utils.cpp" />
+    <ClCompile Include="Q3_Interface.cpp" />
+    <ClCompile Include="Q3_Registers.cpp" />
+    <ClCompile Include="q_math.cpp" />
+    <ClCompile Include="q_shared.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\cgame\cg_camera.h" />
+    <ClInclude Include="..\cgame\cg_local.h" />
+    <ClInclude Include="..\cgame\cg_media.h" />
+    <ClInclude Include="..\cgame\cg_public.h" />
+    <ClInclude Include="..\cgame\cg_text.h" />
+    <ClInclude Include="..\cgame\FX_Public.h" />
+    <ClInclude Include="..\client\fffx.h" />
+    <ClInclude Include="..\client\vmachine.h" />
+    <ClInclude Include="..\Icarus\BlockStream.h" />
+    <ClInclude Include="..\Icarus\ICARUS.h" />
+    <ClInclude Include="..\Icarus\Instance.h" />
+    <ClInclude Include="..\Icarus\interface.h" />
+    <ClInclude Include="..\Icarus\Interpreter.h" />
+    <ClInclude Include="..\Icarus\sequence.h" />
+    <ClInclude Include="..\Icarus\Sequencer.h" />
+    <ClInclude Include="..\Icarus\TaskManager.h" />
+    <ClInclude Include="..\Icarus\Tokenizer.h" />
+    <ClInclude Include="..\renderer\tr_types.h" />
+    <ClInclude Include="..\ui\gameinfo.h" />
+    <ClInclude Include="AI.h" />
+    <ClInclude Include="anims.h" />
+    <ClInclude Include="bg_local.h" />
+    <ClInclude Include="bg_public.h" />
+    <ClInclude Include="boltons.h" />
+    <ClInclude Include="bset.h" />
+    <ClInclude Include="bstate.h" />
+    <ClInclude Include="b_local.h" />
+    <ClInclude Include="b_public.h" />
+    <ClInclude Include="channels.h" />
+    <ClInclude Include="characters.h" />
+    <ClInclude Include="events.h" />
+    <ClInclude Include="fields.h" />
+    <ClInclude Include="g_functions.h" />
+    <ClInclude Include="g_infostrings.h" />
+    <ClInclude Include="g_items.h" />
+    <ClInclude Include="g_local.h" />
+    <ClInclude Include="g_nav.h" />
+    <ClInclude Include="g_navigator.h" />
+    <ClInclude Include="g_public.h" />
+    <ClInclude Include="g_roff.h" />
+    <ClInclude Include="g_shared.h" />
+    <ClInclude Include="g_squad.h" />
+    <ClInclude Include="objectives.h" />
+    <ClInclude Include="Q3_Interface.h" />
+    <ClInclude Include="Q3_Registers.h" />
+    <ClInclude Include="q_shared.h" />
+    <ClInclude Include="say.h" />
+    <ClInclude Include="speakers.h" />
+    <ClInclude Include="statindex.h" />
+    <ClInclude Include="surfaceflags.h" />
+    <ClInclude Include="teams.h" />
+    <ClInclude Include="weapons.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\BaseEF\ext_data\addon.npc" />
+    <CustomBuild Include="..\BaseEF\ext_data\boltOns.cfg" />
+    <CustomBuild Include="..\baseef\ext_data\infostrings.dat">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='FinalBuild|Win32'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="..\baseef\ext_data\items.dat">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='FinalBuild|Win32'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="..\BaseEF\ext_data\NPCs.cfg" />
+    <CustomBuild Include="..\baseef\ext_data\weapons.dat">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='FinalBuild|Win32'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="game.def" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

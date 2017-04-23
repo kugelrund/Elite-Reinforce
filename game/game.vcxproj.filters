@@ -1,0 +1,585 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{5fd4a734-63bc-48e9-8761-e240bf2c3cab}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;hpj;bat;for;f90</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{425b89b9-be2b-4ab2-8d66-4b608b3819b7}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;fi;fd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{ebd9a63c-6d97-48ad-a780-3399bc8ccb9d}</UniqueIdentifier>
+      <Extensions>ico;cur;bmp;dlg;rc2;rct;bin;cnt;rtf;gif;jpg;jpeg;jpe</Extensions>
+    </Filter>
+    <Filter Include="ICARUS">
+      <UniqueIdentifier>{dfa8604b-a6ab-47b9-af1a-7ecee3469f88}</UniqueIdentifier>
+      <Extensions>*.cpp, *.h</Extensions>
+    </Filter>
+    <Filter Include="Cgame">
+      <UniqueIdentifier>{af30e147-24e4-49dc-a1da-2f983f49ab7f}</UniqueIdentifier>
+      <Extensions>*.cpp</Extensions>
+    </Filter>
+    <Filter Include="CGame Headers">
+      <UniqueIdentifier>{443776d2-5eb2-46b8-bc4c-07c11a1fe406}</UniqueIdentifier>
+      <Extensions>*.h</Extensions>
+    </Filter>
+    <Filter Include="Icarus Headers">
+      <UniqueIdentifier>{2836153a-d408-4dbc-bae4-7d925f414918}</UniqueIdentifier>
+      <Extensions>*.h</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AI_Avatar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AI_Borg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AI_Etherian.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AI_Harvester.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AI_HeadBot.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AI_HirogenAlpha.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AI_HunterSeeker.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AI_Parasite.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AI_Reaver.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AI_Scavenger.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AI_ScoutBot.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AI_Species8472.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AI_Utils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AI_Vohrsoth.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AI_WarriorBot.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="g_active.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="g_ambients.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="g_boltons.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="g_breakable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="g_camera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="g_client.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="g_cmds.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="g_combat.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="g_functions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="g_fx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="g_ICARUS.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="g_infostringLoad.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="g_itemLoad.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="g_items.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="g_main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="g_mem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="g_misc.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="g_misc_model.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="g_missile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="g_mover.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="g_nav.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="g_navigator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="g_object.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="g_objectives.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="g_ref.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="g_roff.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="g_savegame.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="g_session.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="g_spawn.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="g_squad.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="g_svcmds.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="g_target.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G_Timer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="g_trigger.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="g_turret.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="g_usable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="g_utils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="g_weapon.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="g_weaponLoad.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ui\gameinfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NPC.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NPC_behavior.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NPC_combat.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NPC_formation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NPC_goal.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NPC_misc.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NPC_move.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NPC_reactions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NPC_senses.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NPC_sounds.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NPC_spawn.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NPC_stats.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NPC_utils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Q3_Interface.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Q3_Registers.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="q_math.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="q_shared.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Icarus\BlockStream.cpp">
+      <Filter>ICARUS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Icarus\Instance.cpp">
+      <Filter>ICARUS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Icarus\Sequence.cpp">
+      <Filter>ICARUS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Icarus\Sequencer.cpp">
+      <Filter>ICARUS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Icarus\TaskManager.cpp">
+      <Filter>ICARUS</Filter>
+    </ClCompile>
+    <ClCompile Include="bg_lib.cpp">
+      <Filter>Cgame</Filter>
+    </ClCompile>
+    <ClCompile Include="bg_misc.cpp">
+      <Filter>Cgame</Filter>
+    </ClCompile>
+    <ClCompile Include="bg_pangles.cpp">
+      <Filter>Cgame</Filter>
+    </ClCompile>
+    <ClCompile Include="bg_panimate.cpp">
+      <Filter>Cgame</Filter>
+    </ClCompile>
+    <ClCompile Include="bg_pmove.cpp">
+      <Filter>Cgame</Filter>
+    </ClCompile>
+    <ClCompile Include="bg_slidemove.cpp">
+      <Filter>Cgame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\cgame\cg_camera.cpp">
+      <Filter>Cgame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\cgame\cg_consolecmds.cpp">
+      <Filter>Cgame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\cgame\cg_draw.cpp">
+      <Filter>Cgame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\cgame\cg_drawtools.cpp">
+      <Filter>Cgame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\cgame\cg_effects.cpp">
+      <Filter>Cgame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\cgame\cg_ents.cpp">
+      <Filter>Cgame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\cgame\cg_env.cpp">
+      <Filter>Cgame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\cgame\cg_event.cpp">
+      <Filter>Cgame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\cgame\cg_info.cpp">
+      <Filter>Cgame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\cgame\cg_localents.cpp">
+      <Filter>Cgame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\cgame\cg_main.cpp">
+      <Filter>Cgame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\cgame\cg_marks.cpp">
+      <Filter>Cgame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\cgame\cg_players.cpp">
+      <Filter>Cgame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\cgame\cg_playerstate.cpp">
+      <Filter>Cgame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\cgame\cg_predict.cpp">
+      <Filter>Cgame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\cgame\cg_scoreboard.cpp">
+      <Filter>Cgame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\cgame\cg_servercmds.cpp">
+      <Filter>Cgame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\cgame\cg_snapshot.cpp">
+      <Filter>Cgame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\cgame\cg_syscalls.cpp">
+      <Filter>Cgame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\cgame\cg_text.cpp">
+      <Filter>Cgame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\cgame\cg_view.cpp">
+      <Filter>Cgame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\cgame\cg_weapons.cpp">
+      <Filter>Cgame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\cgame\FX_avatar.cpp">
+      <Filter>Cgame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\cgame\fx_borg.cpp">
+      <Filter>Cgame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\cgame\FX_Compression.cpp">
+      <Filter>Cgame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\cgame\fx_dreadnought.cpp">
+      <Filter>Cgame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\cgame\FX_Grenade_Launcher.cpp">
+      <Filter>Cgame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\cgame\fx_hunter_seeker.cpp">
+      <Filter>Cgame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\cgame\fx_imod.cpp">
+      <Filter>Cgame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\cgame\fx_lib.cpp">
+      <Filter>Cgame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\cgame\FX_Memory.cpp">
+      <Filter>Cgame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\cgame\fx_parasite.cpp">
+      <Filter>Cgame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\cgame\FX_Phaser.cpp">
+      <Filter>Cgame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\cgame\fx_primitive.cpp">
+      <Filter>Cgame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\cgame\fx_proton.cpp">
+      <Filter>Cgame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\cgame\fx_quantum.cpp">
+      <Filter>Cgame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\cgame\fx_reaver.cpp">
+      <Filter>Cgame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\cgame\fx_scavenger.cpp">
+      <Filter>Cgame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\cgame\fx_scout_bot.cpp">
+      <Filter>Cgame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\cgame\FX_Stasis.cpp">
+      <Filter>Cgame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\cgame\fx_tetrion.cpp">
+      <Filter>Cgame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\cgame\fx_transporter.cpp">
+      <Filter>Cgame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\cgame\FX_Util.cpp">
+      <Filter>Cgame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\cgame\FX_Vohrsoth.cpp">
+      <Filter>Cgame</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AI.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="anims.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="b_local.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="b_public.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="bg_local.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="bg_public.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="boltons.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="bset.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="bstate.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\cgame\cg_camera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="channels.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="characters.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="events.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="fields.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="g_functions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="g_infostrings.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="g_items.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="g_local.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="g_nav.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="g_navigator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="g_public.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="g_roff.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="g_shared.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="g_squad.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ui\gameinfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="objectives.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Q3_Interface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Q3_Registers.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="q_shared.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="say.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="speakers.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="statindex.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="surfaceflags.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="teams.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="weapons.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Icarus\BlockStream.h">
+      <Filter>ICARUS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Icarus\ICARUS.h">
+      <Filter>ICARUS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Icarus\Instance.h">
+      <Filter>ICARUS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Icarus\sequence.h">
+      <Filter>ICARUS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Icarus\Sequencer.h">
+      <Filter>ICARUS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Icarus\TaskManager.h">
+      <Filter>ICARUS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\cgame\cg_local.h">
+      <Filter>CGame Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\cgame\cg_media.h">
+      <Filter>CGame Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\cgame\cg_public.h">
+      <Filter>CGame Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\cgame\cg_text.h">
+      <Filter>CGame Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\client\fffx.h">
+      <Filter>CGame Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\cgame\FX_Public.h">
+      <Filter>CGame Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\renderer\tr_types.h">
+      <Filter>CGame Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\client\vmachine.h">
+      <Filter>CGame Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Icarus\interface.h">
+      <Filter>Icarus Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Icarus\Interpreter.h">
+      <Filter>Icarus Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Icarus\Tokenizer.h">
+      <Filter>Icarus Headers</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="game.def">
+      <Filter>Resource Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\BaseEF\ext_data\addon.npc" />
+    <CustomBuild Include="..\BaseEF\ext_data\boltOns.cfg" />
+    <CustomBuild Include="..\baseef\ext_data\infostrings.dat" />
+    <CustomBuild Include="..\baseef\ext_data\items.dat" />
+    <CustomBuild Include="..\BaseEF\ext_data\NPCs.cfg" />
+    <CustomBuild Include="..\baseef\ext_data\weapons.dat" />
+  </ItemGroup>
+</Project>
