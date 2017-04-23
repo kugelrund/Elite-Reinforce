@@ -244,6 +244,11 @@ void	G_TouchTriggersLerped( gentity_t *ent ) {
 		return;
 	}
 
+	// let us not have an infinite loop
+	if ( ent->maxs[1] <= 0.0 ) {
+		return;
+	}
+
 	VectorSubtract( ent->currentOrigin, ent->lastOrigin, diff );
 	dist = VectorNormalize( diff );
 
