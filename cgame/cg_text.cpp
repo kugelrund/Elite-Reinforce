@@ -742,7 +742,7 @@ int CG_SearchTextPrecache(char *key)
 	{
 		for (i=0;i<precacheText_i;++i)
 		{
-			if ( stricmp( key, precacheText[i].key ) == 0 )
+			if ( _stricmp( key, precacheText[i].key ) == 0 )
 			{
 				return(i);
 			}
@@ -767,7 +767,7 @@ int CG_SearchWavPrecache(char *key)
 	{
 		for (i=0;i<precacheText_i;++i)
 		{
-			if ( stricmp( key, precacheWav[i].textKey ) == 0 )
+			if ( _stricmp( key, precacheWav[i].textKey ) == 0 )
 			{
 				return(i);
 			}

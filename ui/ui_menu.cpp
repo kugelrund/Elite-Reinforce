@@ -1651,7 +1651,7 @@ void UI_InGameMenu(const char*holoFlag)
 	holoMatch = qfalse;
 	if (holoFlag)
 	{
-		if (!strcmpi(holoFlag,"HOLO"))
+		if (!_strcmpi(holoFlag,"HOLO"))
 		{
 			holoMatch = qtrue;
 		}

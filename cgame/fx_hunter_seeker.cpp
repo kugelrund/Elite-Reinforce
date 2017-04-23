@@ -245,7 +245,7 @@ void FX_BotExplode( centity_t *cent )
 		return;
 
 	// Adjust the scale
-	if ( ( !stricmp( cent->gent->owner->NPC_type, "warriorbot" ) ) || ( !stricmp( cent->gent->owner->NPC_type, "warriorbot_boss" ) ) )
+	if ( ( !_stricmp( cent->gent->owner->NPC_type, "warriorbot" ) ) || ( !_stricmp( cent->gent->owner->NPC_type, "warriorbot_boss" ) ) )
 	{
 		scale = 0.8f;
 		cgi_S_StartSound( cent->lerpOrigin, ENTITYNUM_WORLD, CHAN_AUTO, cgs.media.warbotExplodeSounds[Q_irand(0,1)] );

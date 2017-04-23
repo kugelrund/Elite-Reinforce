@@ -847,7 +847,7 @@ static char *Q3_GetAnimBoth( gentity_t *ent )
 		return NULL;
 	}
 
-	if ( stricmp( lowerName, upperName ) )
+	if ( _stricmp( lowerName, upperName ) )
 	{
 #ifdef _DEBUG	// sigh, cut down on tester reports that aren't important
 		Q3_DebugPrint( WL_WARNING, "Q3_GetAnimBoth: legs and torso animations did not match : returning legs\n" );
@@ -1305,7 +1305,7 @@ static CSequencer *Q3_GetEntityByName( const char *name )
 	strncpy( (char *) temp, name, sizeof(temp) );
 	temp[sizeof(temp)-1] = 0;
 
-	ei = ICARUS_EntList.find( strupr( (char *) temp ) );
+	ei = ICARUS_EntList.find( _strupr( (char *) temp ) );
 
 	if ( ei == ICARUS_EntList.end() )
 		return NULL;
@@ -1430,19 +1430,19 @@ static int Q3_PlaySound( int taskID, int entID, const char *name, const char *ch
 	int soundHandle = G_SoundIndex( (char *) finalName );
 	bool bBroadcast = false;
 
-	if ( ( stricmp( channel, "CHAN_ANNOUNCER" ) == 0 ) || (ent->classname && Q_stricmp("target_scriptrunner", ent->classname ) == 0) ) {
+	if ( ( _stricmp( channel, "CHAN_ANNOUNCER" ) == 0 ) || (ent->classname && Q_stricmp("target_scriptrunner", ent->classname ) == 0) ) {
 		bBroadcast = true;
 	}
 
 
 	// moved here from further down so I can easily check channel-type without code dup...
 	//
-	if ( stricmp( channel, "CHAN_VOICE" ) == 0 )
+	if ( _stricmp( channel, "CHAN_VOICE" ) == 0 )
 	{
 		voice_chan = CHAN_VOICE;
 		type_voice = qtrue;
 	}
-	else if ( stricmp( channel, "CHAN_VOICE_ATTEN" ) == 0 )
+	else if ( _stricmp( channel, "CHAN_VOICE_ATTEN" ) == 0 )
 	{
 		voice_chan = CHAN_VOICE_ATTEN;
 		type_voice = qtrue;
@@ -4515,7 +4515,7 @@ void Q3_SetPrecacheFile (const char *file)
 
 		if (holdText)
 		{
-			if ( !( stricmp( holdText, "ROF") ))
+			if ( !( _stricmp( holdText, "ROF") ))
 			{
 				// The token says we should expect a rof file next
 				if ( tokenStr )
@@ -4545,7 +4545,7 @@ void Q3_SetPrecacheFile (const char *file)
 			{		
 				COM_StripExtension((const char *)holdText, holdText);
 				COM_DefaultExtension( holdText, MAX_QPATH, ".wav");
-				precacheWav[precacheWav_i].wavFile = strlwr(holdText);	// Store wav name
+				precacheWav[precacheWav_i].wavFile = _strlwr(holdText);	// Store wav name
 
 				if (com_buildScript->integer) {	//grab the default wav when building
 					G_SoundIndex(holdText);
@@ -6642,72 +6642,72 @@ static void Q3_Set( int taskID, int entID, const char *type_name, const char *da
 		break;
 
 	case SET_IGNOREPAIN:
-		if(!stricmp("true", ((char *)data)))
+		if(!_stricmp("true", ((char *)data)))
 			Q3_SetIgnorePain( entID, qtrue);
-		else if(!stricmp("false", ((char *)data)))
+		else if(!_stricmp("false", ((char *)data)))
 			Q3_SetIgnorePain( entID, qfalse);
 		break;
 
 	case SET_IGNOREENEMIES:
-		if(!stricmp("true", ((char *)data)))
+		if(!_stricmp("true", ((char *)data)))
 			Q3_SetIgnoreEnemies( entID, qtrue);
-		else if(!stricmp("false", ((char *)data)))
+		else if(!_stricmp("false", ((char *)data)))
 			Q3_SetIgnoreEnemies( entID, qfalse);
 		break;
 
 	case SET_IGNOREALERTS:
-		if(!stricmp("true", ((char *)data)))
+		if(!_stricmp("true", ((char *)data)))
 			Q3_SetIgnoreAlerts( entID, qtrue);
-		else if(!stricmp("false", ((char *)data)))
+		else if(!_stricmp("false", ((char *)data)))
 			Q3_SetIgnoreAlerts( entID, qfalse);
 		break;
 
 	case SET_STRAIGHTTOGOAL:
-		if(!stricmp("true", ((char *)data)))
+		if(!_stricmp("true", ((char *)data)))
 			Q3_SetStraightToGoal( entID, qtrue);
-		else if(!stricmp("false", ((char *)data)))
+		else if(!_stricmp("false", ((char *)data)))
 			Q3_SetStraightToGoal( entID, qfalse);
 		break;
 		
 	case SET_DONTSHOOT:
-		if(!stricmp("true", ((char *)data)))
+		if(!_stricmp("true", ((char *)data)))
 			Q3_SetDontShoot( entID, qtrue);
-		else if(!stricmp("false", ((char *)data)))
+		else if(!_stricmp("false", ((char *)data)))
 			Q3_SetDontShoot( entID, qfalse);
 		break;
 	
 	case SET_DONTFIRE:
-		if(!stricmp("true", ((char *)data)))
+		if(!_stricmp("true", ((char *)data)))
 			Q3_SetDontFire( entID, qtrue);
-		else if(!stricmp("false", ((char *)data)))
+		else if(!_stricmp("false", ((char *)data)))
 			Q3_SetDontFire( entID, qfalse);
 		break;
 
 	case SET_NOSLOWDOWN:
-		if(!stricmp("true", ((char *)data)))
+		if(!_stricmp("true", ((char *)data)))
 			Q3_SetNoSlowDown( entID, qtrue);
-		else if(!stricmp("false", ((char *)data)))
+		else if(!_stricmp("false", ((char *)data)))
 			Q3_SetNoSlowDown( entID, qfalse);
 		break;
 
 	case SET_LOCKED_ENEMY:
-		if(!stricmp("true", ((char *)data)))
+		if(!_stricmp("true", ((char *)data)))
 			Q3_SetLockedEnemy( entID, qtrue);
-		else if(!stricmp("false", ((char *)data)))
+		else if(!_stricmp("false", ((char *)data)))
 			Q3_SetLockedEnemy( entID, qfalse);
 		break;
 
 	case SET_NOTARGET:
-		if(!stricmp("true", ((char *)data)))
+		if(!_stricmp("true", ((char *)data)))
 			Q3_SetNoTarget( entID, qtrue);
-		else if(!stricmp("false", ((char *)data)))
+		else if(!_stricmp("false", ((char *)data)))
 			Q3_SetNoTarget( entID, qfalse);
 		break;
 
 	case SET_LEAN:
-		if(!stricmp("right", ((char *)data)))
+		if(!_stricmp("right", ((char *)data)))
 			Q3_SetLean( entID, LEAN_RIGHT);
-		else if(!stricmp("left", ((char *)data)))
+		else if(!_stricmp("left", ((char *)data)))
 			Q3_SetLean( entID, LEAN_LEFT);
 		else
 			Q3_SetLean( entID, LEAN_NONE);
@@ -6829,42 +6829,42 @@ static void Q3_Set( int taskID, int entID, const char *type_name, const char *da
 		break;
 
 	case SET_CROUCHED:
-		if(!stricmp("true", ((char *)data)))
+		if(!_stricmp("true", ((char *)data)))
 			Q3_SetCrouched( entID, qtrue);
 		else
 			Q3_SetCrouched( entID, qfalse);
 		break;
 
 	case SET_WALKING:
-		if(!stricmp("true", ((char *)data)))
+		if(!_stricmp("true", ((char *)data)))
 			Q3_SetWalking( entID, qtrue);	
 		else
 			Q3_SetWalking( entID, qfalse);	
 		break;
 
 	case SET_RUNNING:
-		if(!stricmp("true", ((char *)data)))
+		if(!_stricmp("true", ((char *)data)))
 			Q3_SetRunning( entID, qtrue);	
 		else
 			Q3_SetRunning( entID, qfalse);	
 		break;
 
 	case SET_ALT_FIRE:
-		if(!stricmp("true", ((char *)data)))
+		if(!_stricmp("true", ((char *)data)))
 			Q3_SetAltFire( entID, qtrue);	
 		else
 			Q3_SetAltFire( entID, qfalse);	
 		break;
 
 	case SET_NO_RESPONSE:
-		if(!stricmp("true", ((char *)data)))
+		if(!_stricmp("true", ((char *)data)))
 			Q3_SetNoResponse( entID, qtrue);	
 		else
 			Q3_SetNoResponse( entID, qfalse);	
 		break;
 
 	case SET_NO_COMBAT_TALK:
-		if(!stricmp("true", ((char *)data)))
+		if(!_stricmp("true", ((char *)data)))
 			Q3_SetCombatTalk( entID, qtrue);	
 		else
 			Q3_SetCombatTalk( entID, qfalse);	
@@ -6876,35 +6876,35 @@ static void Q3_Set( int taskID, int entID, const char *type_name, const char *da
 		break;
 
 	case SET_CAREFUL:
-		if(!stricmp("true", ((char *)data)))
+		if(!_stricmp("true", ((char *)data)))
 			Q3_SetCareful( entID, qtrue);	
 		else
 			Q3_SetCareful( entID, qfalse);	
 		break;
 
 	case SET_UNDYING:
-		if(!stricmp("true", ((char *)data)))
+		if(!_stricmp("true", ((char *)data)))
 			Q3_SetUndying( entID, qtrue);	
 		else
 			Q3_SetUndying( entID, qfalse);	
 		break;
 
 	case SET_INVINCIBLE:
-		if(!stricmp("true", ((char *)data)))
+		if(!_stricmp("true", ((char *)data)))
 			Q3_SetInvincible( entID, qtrue);	
 		else
 			Q3_SetInvincible( entID, qfalse);	
 		break;
 
 	case SET_NOAVOID:
-		if(!stricmp("true", ((char *)data)))
+		if(!_stricmp("true", ((char *)data)))
 			Q3_SetNoAvoid( entID, qtrue);	
 		else
 			Q3_SetNoAvoid( entID, qfalse);	
 		break;
 
 	case SET_SOLID:
-		if(!stricmp("true", ((char *)data)))
+		if(!_stricmp("true", ((char *)data)))
 		{
 			if ( !Q3_SetSolid( entID, qtrue) )
 			{
@@ -6919,14 +6919,14 @@ static void Q3_Set( int taskID, int entID, const char *type_name, const char *da
 		break;
 
 	case SET_BEAM:
-		if(!stricmp("true", ((char *)data)))
+		if(!_stricmp("true", ((char *)data)))
 			Q3_SetBeam( entID, qtrue);	
 		else
 			Q3_SetBeam( entID, qfalse);	
 		break;
 
 	case SET_CREATEFORMATION:
-		if(!stricmp("true", ((char *)data)))
+		if(!_stricmp("true", ((char *)data)))
 			Q3_SetFormation( entID, qtrue);	
 		else
 			Q3_SetFormation( entID, qfalse);	
@@ -6937,21 +6937,21 @@ static void Q3_Set( int taskID, int entID, const char *type_name, const char *da
 //		break;
 	
 	case SET_INVISIBLE:
-		if( !stricmp("true", ((char *)data)) )
+		if( !_stricmp("true", ((char *)data)) )
 			Q3_SetInvisible( entID, qtrue );
 		else
 			Q3_SetInvisible( entID, qfalse );
 		break;
 
 	case SET_GREET_ALLIES:
-		if( !stricmp("true", ((char *)data)) )
+		if( !_stricmp("true", ((char *)data)) )
 			Q3_SetGreetAllies( entID, qtrue );
 		else
 			Q3_SetGreetAllies( entID, qfalse );
 		break;
 
 	case SET_PLAYER_LOCKED:
-		if( !stricmp("true", ((char *)data)) )
+		if( !_stricmp("true", ((char *)data)) )
 			Q3_SetPlayerLocked( entID, qtrue );
 		else
 			Q3_SetPlayerLocked( entID, qfalse );
@@ -7013,7 +7013,7 @@ extern void UseCharge (int entityNum);
 		break;
 
 	case SET_PLAYER_USABLE:
-		if(!stricmp("true", ((char *)data)))
+		if(!_stricmp("true", ((char *)data)))
 		{
 			Q3_SetPlayerUsable(entID, qtrue);
 		}
@@ -7037,7 +7037,7 @@ extern void UseCharge (int entityNum);
 		break;
 	
 	case SET_LOOP_ANIM:
-		if(!stricmp("true", ((char *)data)))
+		if(!_stricmp("true", ((char *)data)))
 		{
 			Q3_SetLoopAnim(entID, qtrue);
 		}
@@ -7048,7 +7048,7 @@ extern void UseCharge (int entityNum);
 		break;
 
 	case SET_INTERFACE:
-		if(!stricmp("true", ((char *)data)))
+		if(!_stricmp("true", ((char *)data)))
 		{
 			Q3_SetInterface(entID, "1");
 		}
@@ -7060,7 +7060,7 @@ extern void UseCharge (int entityNum);
 		break;
 
 	case SET_SHIELDS:
-		if(!stricmp("true", ((char *)data)))
+		if(!_stricmp("true", ((char *)data)))
 		{
 			Q3_SetShields(entID, qtrue);
 		}
@@ -7071,7 +7071,7 @@ extern void UseCharge (int entityNum);
 		break;
 	
 	case SET_NO_KNOCKBACK:
-		if(!stricmp("true", ((char *)data)))
+		if(!_stricmp("true", ((char *)data)))
 		{
 			Q3_SetNoKnockback(entID, qtrue);
 		}
@@ -7117,7 +7117,7 @@ extern void UseCharge (int entityNum);
 		break;
 
 	case SET_VIDEO_FADE_IN:
-		if(!stricmp("true", ((char *)data)))
+		if(!_stricmp("true", ((char *)data)))
 		{
 			gi.cvar_set("cl_VidFadeUp", "1");
 		}
@@ -7128,7 +7128,7 @@ extern void UseCharge (int entityNum);
 		break;
 
 	case SET_VIDEO_FADE_OUT:
-		if(!stricmp("true", ((char *)data)))
+		if(!_stricmp("true", ((char *)data)))
 		{
 			gi.cvar_set("cl_VidFadeDown", "1");
 		}
@@ -7304,11 +7304,11 @@ static void Q3_Kill( int entID, const char *name )
 	gentity_t	*victim = NULL;
 	int			o_health;
 
-	if( !stricmp( name, "self") )
+	if( !_stricmp( name, "self") )
 	{
 		victim = ent;
 	}
-	else if( !stricmp( name, "enemy" ) )
+	else if( !_stricmp( name, "enemy" ) )
 	{
 		victim = ent->enemy;
 	}
@@ -8648,7 +8648,7 @@ static int Q3_Evaluate( int p1Type, const char *p1, int p2Type, const char *p2, 
 
 		case TK_STRING:
 		case TK_IDENTIFIER:
-			return (int) !stricmp( c1, c2 );	//NOTENOTE: The script uses proper string comparison logic (ex. ( a == a ) == true )
+			return (int) !_stricmp( c1, c2 );	//NOTENOTE: The script uses proper string comparison logic (ex. ( a == a ) == true )
 			break;
 
 		default:
@@ -8748,7 +8748,7 @@ static int Q3_Evaluate( int p1Type, const char *p1, int p2Type, const char *p2, 
 
 		case TK_STRING:
 		case TK_IDENTIFIER:
-			return (int) stricmp( c1, c2 );
+			return (int) _stricmp( c1, c2 );
 			break;
 
 		default:
@@ -8862,7 +8862,7 @@ static void Q3_Play( int taskID, int entID, const char *type, const char *name )
 {
 	gentity_t *ent = &g_entities[entID];
 
-	if ( !stricmp( type, "PLAY_ROFF" ) )
+	if ( !_stricmp( type, "PLAY_ROFF" ) )
 	{
 		// Try to load the requested ROFF
 		if ( G_LoadRoff( name ) )

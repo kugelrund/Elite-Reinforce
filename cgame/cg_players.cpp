@@ -2785,7 +2785,7 @@ void CG_AddTagBasedEffects( centity_t *cent, refEntity_t *legs, refEntity_t *tor
 	else if ( cent->gent->client->race == RACE_BOT )
 	{
 		// I hate sticmps!
-		if ( !stricmp( cent->gent->NPC_type, "hunterseeker" ) )
+		if ( !_stricmp( cent->gent->NPC_type, "hunterseeker" ) )
 		{
 			CG_HunterSeekerEffects( cent, legs );
 			return;

@@ -124,7 +124,7 @@ Headbot_CalculatePlugSpot
 
 static void Headbot_CalculatePlugSpot( gentity_t *target, vec3_t out )
 {
-	if ( stricmp( target->NPC_type, "scoutbot" ) == 0 )
+	if ( _stricmp( target->NPC_type, "scoutbot" ) == 0 )
 	{
 		vec3_t	forward, right;
 
@@ -137,7 +137,7 @@ static void Headbot_CalculatePlugSpot( gentity_t *target, vec3_t out )
 		return;
 	}
 
-	if ( ( stricmp( target->NPC_type, "warriorbot" ) == 0 ) || ( stricmp( target->NPC_type, "warriorbot_boss" ) == 0 ) )
+	if ( ( _stricmp( target->NPC_type, "warriorbot" ) == 0 ) || ( _stricmp( target->NPC_type, "warriorbot_boss" ) == 0 ) )
 	{
 		vec3_t	forward, right;
 
@@ -198,7 +198,7 @@ static void Headbot_Plugin( const char *name )
 	}
 
 	//Must be of a valid type
-	if ( ( stricmp( target->NPC_type, "scoutbot" ) ) && ( stricmp( target->NPC_type, "warriorbot" ) ) && ( stricmp( target->NPC_type, "warriorbot_boss" ) ))
+	if ( ( _stricmp( target->NPC_type, "scoutbot" ) ) && ( _stricmp( target->NPC_type, "warriorbot" ) ) && ( _stricmp( target->NPC_type, "warriorbot_boss" ) ))
 		return;
 
 	vec3_t	targetPos;

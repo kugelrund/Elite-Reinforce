@@ -416,7 +416,7 @@ void NPC_SetFX_SpawnStates( gentity_t *ent )
 	}
 
 	// -Hunterseeker -------
-	if ( !stricmp( ent->NPC_type, "hunterseeker" ) )
+	if ( !_stricmp( ent->NPC_type, "hunterseeker" ) )
 	{
 		// Set the custom banking flag
 		ent->s.eFlags |= EF_BANK_STRAFE;
