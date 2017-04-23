@@ -89,7 +89,7 @@ OBJ_LoadMissionObjectives
 */
 void OBJ_LoadMissionObjectives( gclient_t *client )
 {
-	gi.ReadFromSaveGame('OBJT', (void *) &client->sess.mission_objectives, sizeof(client->sess.mission_objectives));
+	gi.ReadFromSaveGame('OBJT', (void *) &client->sess.mission_objectives, sizeof(client->sess.mission_objectives), NULL);
 }
 
 
@@ -100,7 +100,7 @@ OBJ_LoadTacticalInfo
 */
 void OBJ_LoadTacticalInfo(void)
 {
-	gi.ReadFromSaveGame('TACT', (void *) &tactical_info, sizeof(tactical_info));
+	gi.ReadFromSaveGame('TACT', (void *) &tactical_info, sizeof(tactical_info), NULL);
 }
 
 /*

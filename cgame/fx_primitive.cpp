@@ -1523,14 +1523,14 @@ bool FXBezier::Update( void )
 	ftime = cg.frametime * 0.001f;
 	time2 = ftime * ftime * 0.5f;
 
-	for ( int i = 0 ; i < 3 ; i++ ) 
+	for ( int i = 0 ; i < 3 ; i++ )
 	{
 		new_origin[i] = m_control1[i] + ftime * m_control1_velocity[i] + time2 * m_control1_velocity[i];
 	}
 
 	VectorCopy( new_origin, m_control1 );
 
-	for ( i = 0 ; i < 3 ; i++ ) 
+	for ( int i = 0 ; i < 3 ; i++ )
 	{
 		new_origin[i] = m_control2[i] + ftime * m_control2_velocity[i] + time2 * m_control2_velocity[i];
 	}

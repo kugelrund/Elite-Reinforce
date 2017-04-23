@@ -2130,7 +2130,7 @@ Load
 int	CSequencer::Load( void )
 {	
 	//Get the owner of this sequencer
-	m_ie->I_ReadSaveData( 'SQRE', &m_ownerID, sizeof( m_ownerID ) );
+	m_ie->I_ReadSaveData( 'SQRE', &m_ownerID, sizeof( m_ownerID ), NULL );
 
 	//Link the entity back to the sequencer
 	m_ie->I_LinkEntity( m_ownerID, this, m_taskManager );
@@ -2140,12 +2140,12 @@ int	CSequencer::Load( void )
 	int			numSequences, seqID, taskID, numTasks;
 
 	//Get the number of sequences to read
-	m_ie->I_ReadSaveData( 'SQR#', &numSequences, sizeof( numSequences ) );
+	m_ie->I_ReadSaveData( 'SQR#', &numSequences, sizeof( numSequences ), NULL );
 
 	//Read in all the sequences
 	for ( int i = 0; i < numSequences; i++ )
 	{
-		m_ie->I_ReadSaveData( 'SQRI', &seqID, sizeof( seqID ) );
+		m_ie->I_ReadSaveData( 'SQRI', &seqID, sizeof( seqID ), NULL );
 
 		seq = m_owner->GetSequence( seqID );
 
@@ -2162,16 +2162,16 @@ int	CSequencer::Load( void )
 	m_taskManager->Load();
 
 	//Get the number of tasks in the map
-	m_ie->I_ReadSaveData( 'SQT#', &numTasks, sizeof( numTasks ) );
+	m_ie->I_ReadSaveData( 'SQT#', &numTasks, sizeof( numTasks ), NULL );
 
 	//Read in, and reassociate the tasks to the sequences
-	for ( i = 0; i < numTasks; i++ )
+	for ( int i = 0; i < numTasks; i++ )
 	{
 		//Read in the task's ID
-		m_ie->I_ReadSaveData( 'STID', &taskID, sizeof( taskID ) );
+		m_ie->I_ReadSaveData( 'STID', &taskID, sizeof( taskID ), NULL );
 		
 		//Read in the sequence's ID
-		m_ie->I_ReadSaveData( 'SSID', &seqID, sizeof( seqID ) );
+		m_ie->I_ReadSaveData( 'SSID', &seqID, sizeof( seqID ), NULL );
 
 		taskGroup = m_taskManager->GetTaskGroup( taskID );
 
@@ -2188,15 +2188,15 @@ int	CSequencer::Load( void )
 	int	curGroupID;
 
 	//Get the current task group
-	m_ie->I_ReadSaveData( 'SQCT', &curGroupID, sizeof( curGroupID ) );
+	m_ie->I_ReadSaveData( 'SQCT', &curGroupID, sizeof( curGroupID ), NULL );
 
 	m_curGroup = ( curGroupID == -1 ) ? NULL : m_taskManager->GetTaskGroup( curGroupID );
 
 	//Get the number of commands
-	m_ie->I_ReadSaveData( 'SQ#C', &m_numCommands, sizeof( m_numCommands ) );
+	m_ie->I_ReadSaveData( 'SQ#C', &m_numCommands, sizeof( m_numCommands ), NULL );
 
 	//Get the current sequence
-	m_ie->I_ReadSaveData( 'SQCS', &seqID, sizeof( seqID ) );
+	m_ie->I_ReadSaveData( 'SQCS', &seqID, sizeof( seqID ), NULL );
 
 	m_curSequence = ( seqID != -1 ) ? m_owner->GetSequence( seqID ) : NULL;
 

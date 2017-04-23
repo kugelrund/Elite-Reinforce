@@ -50,7 +50,7 @@ void CG_Spark( vec3_t origin, vec3_t normal )
 	{	
 		scale = 0.2f + (random() *0.4);
 
-		for ( j = 0; j < 3; j ++ )
+		for ( int j = 0; j < 3; j ++ )
 			dir[j] = normal[j] + (0.25f * crandom());
 		
 		VectorNormalize(dir);
@@ -72,7 +72,7 @@ void CG_Spark( vec3_t origin, vec3_t normal )
 	if ( rand() & 1 )
 	{
 		numSparks = 1 + (random() * 2.0f);
-		for ( i = 0; i < numSparks; i++ )
+		for ( int i = 0; i < numSparks; i++ )
 		{	
 			scale = 0.5f + (random() * 0.5f);
 
@@ -771,7 +771,7 @@ void CG_ElectricFire( vec3_t origin, vec3_t normal )
 	VectorMA( origin, 1, normal, direction );
 	VectorSet( velocity, 0, 0, 8 );
 
-	for ( i = 0; i < 3; i++)
+	for ( int i = 0; i < 3; i++)
 	{
 		scale = 6.0f + (random() * 8.0f);
 		alpha = 0.1 + (random() * 0.4f);
@@ -1048,7 +1048,7 @@ void CG_SmallSpark( vec3_t origin, vec3_t normal )
 	{	
 		scale = 0.1f + (random() *0.2f );
 
-		for ( j = 0; j < 3; j ++ )
+		for ( int j = 0; j < 3; j ++ )
 			dir[j] = normal[j] + (0.7f * crandom());
 
 		VectorMA( origin, 0.0f + ( random() * 0.5f ), dir, start );

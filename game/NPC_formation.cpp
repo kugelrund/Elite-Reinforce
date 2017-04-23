@@ -848,7 +848,7 @@ int NPC_BuildSquadPointDistances( gentity_t *self, const vec3_t center, squadPat
 	minDist = 0;
 	
 	//Rank all waypoints
-	for ( i = 0; i < squadPath->numWaypoints; i++ )
+	for ( int i = 0; i < squadPath->numWaypoints; i++ )
 	{
 		bestDist = (unsigned long) -1;
 

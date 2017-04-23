@@ -69,7 +69,7 @@ void TIMER_Load( void )
 	{
 		int numTimers;
 
-		gi.ReadFromSaveGame( 'TIME', (void *)&numTimers, sizeof(numTimers) );
+		gi.ReadFromSaveGame( 'TIME', (void *)&numTimers, sizeof(numTimers), NULL );
 
 		//Make sure there's something to read
 		if ( numTimers == 0 )
@@ -81,7 +81,7 @@ void TIMER_Load( void )
 			int		length, time;
 			char	tempBuffer[1024];	//FIXME: Blech!
 
-			gi.ReadFromSaveGame( 'TSLN', (void *) &length, sizeof( length ) );
+			gi.ReadFromSaveGame( 'TSLN', (void *) &length, sizeof( length ), NULL );
 
 			//Validity check, though this will never happen (unless of course you pass in gibberish)
 			if ( length >= 1024 )
@@ -91,8 +91,8 @@ void TIMER_Load( void )
 			}
 
 			//Read the id and time
-			gi.ReadFromSaveGame( 'TSNM', (char *) tempBuffer, length );
-			gi.ReadFromSaveGame( 'TDTA', (void *) &time, sizeof( time ) );
+			gi.ReadFromSaveGame( 'TSNM', (char *) tempBuffer, length, NULL );
+			gi.ReadFromSaveGame( 'TDTA', (void *) &time, sizeof( time ), NULL );
 
 			//Restore it
 			g_timers[ j ][(const char *) tempBuffer ] = time;

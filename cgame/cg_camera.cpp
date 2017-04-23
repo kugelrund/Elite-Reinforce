@@ -1162,7 +1162,7 @@ void CGCam_UpdateShake( vec3_t origin, vec3_t angles )
 	//Move the camera
 	VectorAdd( origin, moveDir, origin );
 
-	for ( i=0; i < 3; i++ )
+	for ( int i=0; i < 3; i++ )
 		moveDir[i] = ( crandom() * intensity );
 
 	//FIXME: Lerp

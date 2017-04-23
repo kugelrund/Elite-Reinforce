@@ -945,6 +945,6 @@ void G_LoadSave_WriteMiscData(void)
 
 void G_LoadSave_ReadMiscData(void)
 {
-	gi.ReadFromSaveGame('LCKD', &player_locked, sizeof(player_locked));
+	gi.ReadFromSaveGame('LCKD', &player_locked, sizeof(player_locked), NULL);
 }
 

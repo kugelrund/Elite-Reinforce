@@ -641,7 +641,7 @@ static qboolean	CG_CalcFov( void ) {
 					cg_zoomFov = cg_fov.value;
 				else
 				{//still zooming
-					static zoomSoundTime = 0;
+					static int zoomSoundTime = 0;
 
 					if ( zoomSoundTime < cg.time )
 					{

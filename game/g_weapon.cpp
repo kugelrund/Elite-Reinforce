@@ -10,7 +10,7 @@
 
 extern vmCvar_t cg_thirdPerson;
 
-static	vec3_t	forward, vright, up;
+static	vec3_t	_forward, vright, up;
 static	vec3_t	muzzle;
 
 #define	BORG_ADAPT_NUM_HITS 10
@@ -112,7 +112,7 @@ qboolean W_CheckBorgAdapt( gentity_t *attacker, int weapon, gentity_t *traceEnt,
 				//Hit them
 				vec3_t	backward;
 
-				VectorScale(forward, -1, backward);
+				VectorScale(_forward, -1, backward);
 				FX_BorgHit( endpos , backward );
 
 				return qtrue;
@@ -153,8 +153,8 @@ void WP_FirePhaser( gentity_t *ent, qboolean alt_fire )
 	else
 		VectorCopy( muzzle, start );
 
-	VectorMA( start, -8, forward, start );
-	VectorMA( start, weaponData[WP_PHASER].range, forward, end);
+	VectorMA( start, -8, _forward, start );
+	VectorMA( start, weaponData[WP_PHASER].range, _forward, end);
 
 	// Find out who we've hit
 	gi.trace ( &tr, start, NULL, NULL, end, ent->s.number, MASK_SHOT);
@@ -182,14 +182,14 @@ void WP_FirePhaser( gentity_t *ent, qboolean alt_fire )
 			{
 				// If we are in weak mode, only damage every now and then.
 				if ( (rand() & 1) )
-					G_Damage( traceEnt, ent, ent, forward, tr.endpos, PHASER_WEAK_DAMAGE, DAMAGE_NO_KNOCKBACK, MOD_PHASER );
+					G_Damage( traceEnt, ent, ent, _forward, tr.endpos, PHASER_WEAK_DAMAGE, DAMAGE_NO_KNOCKBACK, MOD_PHASER );
 			}
 			else
 			{
 				if ( alt_fire )
-					G_Damage( traceEnt, ent, ent, forward, tr.endpos, PHASER_ALT_DAMAGE, DAMAGE_NO_KNOCKBACK, MOD_PHASER_ALT );
+					G_Damage( traceEnt, ent, ent, _forward, tr.endpos, PHASER_ALT_DAMAGE, DAMAGE_NO_KNOCKBACK, MOD_PHASER_ALT );
 				else
-					G_Damage( traceEnt, ent, ent, forward, tr.endpos, PHASER_DAMAGE, DAMAGE_NO_KNOCKBACK, MOD_PHASER );
+					G_Damage( traceEnt, ent, ent, _forward, tr.endpos, PHASER_DAMAGE, DAMAGE_NO_KNOCKBACK, MOD_PHASER );
 			}
 		}
 	}
@@ -224,8 +224,8 @@ void WP_FireCompressionRifle ( gentity_t *ent, qboolean alt_fire )
 	else
 		VectorCopy( muzzle, start );
 
-	VectorMA( start, -8, forward, start );
-	VectorMA( start, 8192, forward, end );
+	VectorMA( start, -8, _forward, start );
+	VectorMA( start, 8192, _forward, end );
 
 	gi.trace ( &tr, start, NULL, NULL, end, ent->s.number, MASK_SHOT );
 
@@ -304,11 +304,11 @@ void WP_FireCompressionRifle ( gentity_t *ent, qboolean alt_fire )
 
 		if ( alt_fire )
 		{
-			G_Damage( traceEnt, ent, ent, forward, tr.endpos, damage, DAMAGE_NO_KNOCKBACK, MOD_SNIPER );
+			G_Damage( traceEnt, ent, ent, _forward, tr.endpos, damage, DAMAGE_NO_KNOCKBACK, MOD_SNIPER );
 		}
 		else
 		{
-			G_Damage( traceEnt, ent, ent, forward, tr.endpos, damage, 0, MOD_CRIFLE );
+			G_Damage( traceEnt, ent, ent, _forward, tr.endpos, damage, 0, MOD_CRIFLE );
 		}
 	}
 }
@@ -341,8 +341,8 @@ void WP_FireIMOD ( gentity_t *ent, qboolean alt_fire )
 	else
 		VectorCopy( muzzle, start );
 
-	VectorMA( start, -8, forward, start );
-	VectorMA ( start, weaponData[WP_IMOD].range, forward, end);
+	VectorMA( start, -8, _forward, start );
+	VectorMA ( start, weaponData[WP_IMOD].range, _forward, end);
 	gi.trace ( &tr, start, NULL, NULL, end, ent->s.number, MASK_SHOT);
 
 	// If the beam hits a skybox, etc. it would look foolish to add in an explosion
@@ -410,7 +410,7 @@ void WP_FireIMOD ( gentity_t *ent, qboolean alt_fire )
 	if ( traceEnt->takedamage) 
 	{
 		//For knockback - send them up in air
-		VectorCopy(forward, d_dir);
+		VectorCopy(_forward, d_dir);
 		if(d_dir[2] < 0.30f)
 			d_dir[2] = 0.30f;
 
@@ -570,7 +570,7 @@ void WP_FireScavenger( gentity_t *ent, qboolean alt_fire, qboolean greyscale )
 	vec3_t		start;
 	float		offset;
 
-	VectorCopy( forward, dir );
+	VectorCopy( _forward, dir );
 	VectorCopy( muzzle, start );
 
 	if ( alt_fire )
@@ -582,7 +582,7 @@ void WP_FireScavenger( gentity_t *ent, qboolean alt_fire, qboolean greyscale )
 		if ( ent->s.number == 0 )
 		{
 			// FIXME: Move in from the side muzzle.  But, it might be much better to have it just come from the main barrel...
-			VectorMA( start, -20, forward, start );
+			VectorMA( start, -20, _forward, start );
 			VectorMA( start, 1, vright, start );
 			VectorMA( start, -4, up, start );
 		}
@@ -687,7 +687,7 @@ void WP_FireStasisMain( gentity_t *ent )
 	vec3_t	dir, start;
 	vec3_t	angles, temp;
 
-	VectorCopy( forward, dir );
+	VectorCopy( _forward, dir );
 	VectorCopy( muzzle, start );
 
 	vectoangles( dir, angles );
@@ -744,7 +744,7 @@ void WP_FireStasisAlt( gentity_t *ent )
 	qboolean	do_damage = qtrue;
 
 	// Find the main impact point
-	VectorMA (muzzle, MAXRANGE_STASIS, forward, end);
+	VectorMA (muzzle, MAXRANGE_STASIS, _forward, end);
 	gi.trace ( &tr, muzzle, NULL, NULL, end, ent->s.number, MASK_SHOT);
 	
 	// Rendering things like explosions when hitting a sky box would look bad, but you still want to see the beam
@@ -756,26 +756,26 @@ void WP_FireStasisAlt( gentity_t *ent )
 	traceEnt = &g_entities[ tr.entityNum ];
 
 	// Why am I doing this when I've got a right and up already?  Well, because this is how it is calc'ed on the client side.
-	CrossProduct(forward, d_up, d_right);
-	CrossProduct(d_right, forward, d_up);	// Change the "fake up" (0,0,1) to a "real up" (perpendicular to the forward vector).
+	CrossProduct(_forward, d_up, d_right);
+	CrossProduct(d_right, _forward, d_up);	// Change the "fake up" (0,0,1) to a "real up" (perpendicular to the forward vector).
 
 	// Fire a shot up and to the right.
-	VectorMA(forward, STASIS_ALT_RIGHT_OFS, d_right, d_dir);
+	VectorMA(_forward, STASIS_ALT_RIGHT_OFS, d_right, d_dir);
 	VectorMA(d_dir, STASIS_ALT_UP_OFS, d_up, d_dir);
 	DoSmallStasisBeam(ent, muzzle, d_dir);
 
 	// Fire a shot up and to the left.
-	VectorMA(forward, -STASIS_ALT_RIGHT_OFS, d_right, d_dir);
+	VectorMA(_forward, -STASIS_ALT_RIGHT_OFS, d_right, d_dir);
 	VectorMA(d_dir, STASIS_ALT_UP_OFS, d_up, d_dir);
 	DoSmallStasisBeam(ent, muzzle, d_dir);
 
 	// Fire a shot a bit down and to the right.
-	VectorMA(forward, 2.0*STASIS_ALT_RIGHT_OFS, d_right, d_dir);
+	VectorMA(_forward, 2.0*STASIS_ALT_RIGHT_OFS, d_right, d_dir);
 	VectorMA(d_dir, -0.5*STASIS_ALT_UP_OFS, d_up, d_dir);
 	DoSmallStasisBeam(ent, muzzle, d_dir);
 
 	// Fire a shot up and to the left.
-	VectorMA(forward, -2.0*STASIS_ALT_RIGHT_OFS, d_right, d_dir);
+	VectorMA(_forward, -2.0*STASIS_ALT_RIGHT_OFS, d_right, d_dir);
 	VectorMA(d_dir, -0.5*STASIS_ALT_UP_OFS, d_up, d_dir);
 	DoSmallStasisBeam(ent, muzzle, d_dir);
 
@@ -812,7 +812,7 @@ void WP_FireStasisAlt( gentity_t *ent )
 	if ( traceEnt->takedamage && do_damage ) 
 	{
 		//For knockback - send them up in air
-		VectorCopy( forward, d_dir );
+		VectorCopy( _forward, d_dir );
 		if ( d_dir[2] < 0.30f )
 		{
 			d_dir[2] = 0.30f;
@@ -950,7 +950,7 @@ void WP_FireGrenade( gentity_t *ent, qboolean alt_fire )
 	gentity_t	*bolt;
 	vec3_t		dir, start;
 
-	VectorCopy( forward, dir );
+	VectorCopy( _forward, dir );
 	VectorCopy( muzzle, start );
 
 	bolt = G_Spawn();
@@ -1048,7 +1048,7 @@ void FireTetrionBullet( gentity_t *ent, vec3_t start, vec3_t dir )
 		r = crandom()*TETRION_SPREAD;
 		u = crandom()*TETRION_SPREAD;
 
-		VectorMA (start, 8192, forward, end);
+		VectorMA (start, 8192, _forward, end);
 
 		VectorMA (end, r, vright, end);
 		VectorMA (end, u, up, end);
@@ -1073,7 +1073,7 @@ void FireTetrionBullet( gentity_t *ent, vec3_t start, vec3_t dir )
 			VectorCopy( start, tent->s.origin2 );
 			tent->s.eventParm = DirToByte( tr.plane.normal );
 			tent->s.weapon = ent->s.weapon;
-			VectorScale( forward, -1, tent->pos1 );		// Used for trace-back
+			VectorScale( _forward, -1, tent->pos1 );		// Used for trace-back
 			tent->s.otherEntityNum = traceEnt->s.number;
 		}
 
@@ -1112,7 +1112,7 @@ void FireTetrionBullet( gentity_t *ent, vec3_t start, vec3_t dir )
 		// Let's do some damage to whomever or whatever we hit
 		if ( traceEnt->takedamage && do_damage ) 
 		{
-			G_Damage( traceEnt, ent, ent, forward, tr.endpos, TETRION_DAMAGE, DAMAGE_NO_KNOCKBACK, MOD_TETRION );
+			G_Damage( traceEnt, ent, ent, _forward, tr.endpos, TETRION_DAMAGE, DAMAGE_NO_KNOCKBACK, MOD_TETRION );
 		}
 	}	// next shot trace
 
@@ -1171,7 +1171,7 @@ void WP_FireTetrionDisruptor( gentity_t *ent, qboolean alt_fire )
 	vec3_t	dir;
 	vec3_t	start;
 
-	VectorCopy( forward, dir );
+	VectorCopy( _forward, dir );
 	VectorCopy( muzzle, start );
 	VectorNormalize (dir);
 
@@ -1212,7 +1212,7 @@ void WP_FireDreadnoughtBeam( gentity_t *ent )
 	else
 		VectorCopy( muzzle, start );
 
-	VectorMA( start, weaponData[WP_DREADNOUGHT].range, forward, end );
+	VectorMA( start, weaponData[WP_DREADNOUGHT].range, _forward, end );
 
 	// Give the beam a bit of meat
 	VectorSet( maxs, 2.0f, 2.0f, 2.0f );
@@ -1240,7 +1240,7 @@ void WP_FireDreadnoughtBeam( gentity_t *ent )
 		
 		if ( do_damage )
 		{
-			G_Damage( traceEnt, ent, ent, forward, tr.endpos, DREADNOUGHT_DAMAGE, 0, MOD_DREADNOUGHT);
+			G_Damage( traceEnt, ent, ent, _forward, tr.endpos, DREADNOUGHT_DAMAGE, 0, MOD_DREADNOUGHT);
 		}
 	}
 }
@@ -1258,7 +1258,7 @@ void WP_FireDreadnoughtBurst( gentity_t *ent )
 	gentity_t	*bolt;
 	vec3_t		dir, start;
 
-	VectorCopy( forward, dir );
+	VectorCopy( _forward, dir );
 	VectorCopy( muzzle, start );
 
 	bolt = G_Spawn();
@@ -1292,7 +1292,7 @@ void WP_FireDreadnoughtBurst( gentity_t *ent )
 	VectorCopy( start, bolt->s.origin);
 
 	//VectorScale( dir, DN_VELOCITY, bolt->s.pos.trDelta );
-	VectorCopy( forward, bolt->movedir);
+	VectorCopy( _forward, bolt->movedir);
 	
 	SnapVector( bolt->s.pos.trDelta );			// save net bandwidth
 	VectorCopy( start, bolt->currentOrigin );
@@ -1344,7 +1344,7 @@ void WP_DreadnoughtBurstThink( gentity_t *ent )
 			if ( traceEnt->client->playerTeam == TEAM_STARFLEET || traceEnt->client->noclip )
 			{
 				// Scale down damage, hurt them, but don't stick on them
-				G_Damage( traceEnt, ent, ent->owner, forward, tr.endpos, ent->damage * 0.5f, 0, MOD_DREADNOUGHT );
+				G_Damage( traceEnt, ent, ent->owner, _forward, tr.endpos, ent->damage * 0.5f, 0, MOD_DREADNOUGHT );
 				goto ignore1;
 			}
 			G_SetEnemy(ent, traceEnt);
@@ -1356,11 +1356,11 @@ void WP_DreadnoughtBurstThink( gentity_t *ent )
 			VectorNormalize( ent->movedir );
 			ent->nextthink = level.time + DN_ALT_THINK_TIME;
 
-			G_Damage( traceEnt, ent, ent->owner, forward, tr.endpos, ent->damage, 0, MOD_DREADNOUGHT );
+			G_Damage( traceEnt, ent, ent->owner, _forward, tr.endpos, ent->damage, 0, MOD_DREADNOUGHT );
 			return;
 		}
 
-		G_Damage( traceEnt, ent, ent->owner, forward, tr.endpos, ent->damage, 0, MOD_DREADNOUGHT );
+		G_Damage( traceEnt, ent, ent->owner, _forward, tr.endpos, ent->damage, 0, MOD_DREADNOUGHT );
 	}
 	else
 	{
@@ -1447,11 +1447,11 @@ void WP_DreadnoughtBurstThink( gentity_t *ent )
 			VectorNormalize( ent->movedir );
 			ent->nextthink = level.time + DN_ALT_THINK_TIME;
 
-			G_Damage( traceEnt, ent, ent->owner, forward, tr.endpos, ent->damage, 0, MOD_DREADNOUGHT );
+			G_Damage( traceEnt, ent, ent->owner, _forward, tr.endpos, ent->damage, 0, MOD_DREADNOUGHT );
 			return;
 		}
 
-		G_Damage( traceEnt, ent, ent->owner, forward, tr.endpos, ent->damage, 0, MOD_DREADNOUGHT );
+		G_Damage( traceEnt, ent, ent->owner, _forward, tr.endpos, ent->damage, 0, MOD_DREADNOUGHT );
 	}
 
 	// Search a random interval in the opposite direction
@@ -1479,11 +1479,11 @@ void WP_DreadnoughtBurstThink( gentity_t *ent )
 			VectorNormalize( ent->movedir );
 			ent->nextthink = level.time + DN_ALT_THINK_TIME;
 
-			G_Damage( traceEnt, ent, ent->owner, forward, tr.endpos, ent->damage, 0, MOD_DREADNOUGHT );
+			G_Damage( traceEnt, ent, ent->owner, _forward, tr.endpos, ent->damage, 0, MOD_DREADNOUGHT );
 			return;
 		}
 
-		G_Damage( traceEnt, ent, ent->owner, forward, tr.endpos, ent->damage, 0, MOD_DREADNOUGHT );
+		G_Damage( traceEnt, ent, ent->owner, _forward, tr.endpos, ent->damage, 0, MOD_DREADNOUGHT );
 	}
 
 ignore1:
@@ -1756,7 +1756,7 @@ void WP_FireQuantumBurst( gentity_t *ent, qboolean alt_fire )
 {
 	vec3_t	dir, start;
 
-	VectorCopy( forward, dir );
+	VectorCopy( _forward, dir );
 	VectorCopy( muzzle, start );
 
 	if ( alt_fire )
@@ -1817,8 +1817,8 @@ void WP_FireProtonGun ( gentity_t *ent, qboolean alt_fire )
 	else
 		VectorCopy( muzzle, start );
 
-	VectorMA( start, -8, forward, start );
-	VectorMA( start, 8192, forward, end );
+	VectorMA( start, -8, _forward, start );
+	VectorMA( start, 8192, _forward, end );
 
 	gi.trace ( &tr, start, NULL, NULL, end, ent->s.number, MASK_SHOT );
 
@@ -1897,11 +1897,11 @@ void WP_FireProtonGun ( gentity_t *ent, qboolean alt_fire )
 
 		if ( alt_fire )
 		{
-			G_Damage( traceEnt, ent, ent, forward, tr.endpos, damage, DAMAGE_NO_KNOCKBACK, MOD_SNIPER );
+			G_Damage( traceEnt, ent, ent, _forward, tr.endpos, damage, DAMAGE_NO_KNOCKBACK, MOD_SNIPER );
 		}
 		else
 		{
-			G_Damage( traceEnt, ent, ent, forward, tr.endpos, damage, 0, MOD_CRIFLE );
+			G_Damage( traceEnt, ent, ent, _forward, tr.endpos, damage, 0, MOD_CRIFLE );
 		}
 	}
 }
@@ -1922,7 +1922,7 @@ void WP_FireBorgWeapon( gentity_t *ent )
 	gentity_t	*bolt;
 	vec3_t		dir, start;
 
-	VectorCopy( forward, dir );
+	VectorCopy( _forward, dir );
 	VectorCopy( muzzle, start );
 	VectorNormalize (dir);
 
@@ -1971,7 +1971,7 @@ void WP_BorgAssimilate(gentity_t *borg)
 
 	muzzle[2] -= 8;
 
-	VectorMA (muzzle, 64, forward, end);
+	VectorMA (muzzle, 64, _forward, end);
 
 	gi.trace ( &tr, muzzle, NULL, NULL, end, borg->s.number, MASK_SHOT );
 	
@@ -1987,7 +1987,7 @@ void WP_BorgAssimilate(gentity_t *borg)
 
 		float damage = ( g_spskill->integer == 2 ) ? 5.0f : 1.0f;
 
-		G_Damage( traceEnt, borg, borg, forward, tr.endpos, damage, DAMAGE_NO_KNOCKBACK, MOD_ASSIMILATE );
+		G_Damage( traceEnt, borg, borg, _forward, tr.endpos, damage, DAMAGE_NO_KNOCKBACK, MOD_ASSIMILATE );
 	}
 
 	//Basically, longer on easy, less on hard
@@ -2005,7 +2005,7 @@ void WP_FireBorgTaser( gentity_t *ent )
 	gentity_t	*tent;
 	gentity_t	*traceEnt;
 
-	VectorMA (muzzle, weaponData[WP_BORG_TASER].range, forward, end);
+	VectorMA (muzzle, weaponData[WP_BORG_TASER].range, _forward, end);
 
 	gi.trace ( &tr, muzzle, NULL, NULL, end, ent->s.number, MASK_SHOT);
 	
@@ -2037,7 +2037,7 @@ void WP_FireBorgTaser( gentity_t *ent )
 	if ( traceEnt->takedamage) 
 	{
 		//For knockback - send them up in air
-		VectorCopy(forward, d_dir);
+		VectorCopy(_forward, d_dir);
 
 		if(d_dir[2] < 0.30f)
 		{
@@ -2076,7 +2076,7 @@ void WP_BotWelder( gentity_t *ent )
 	gentity_t	*bolt;
 	vec3_t		dir, start;
 
-	VectorCopy( forward, dir );
+	VectorCopy( _forward, dir );
 	VectorCopy( muzzle, start );
 	VectorNormalize (dir);
 
@@ -2132,7 +2132,7 @@ void WP_BotLaser( gentity_t *ent )
 	vec3_t		end;
 	gentity_t	*traceEnt;//, *tent;
 
-	VectorMA( muzzle, BOT_LASER_RANGE, forward, end );
+	VectorMA( muzzle, BOT_LASER_RANGE, _forward, end );
 
 	gi.trace( &tr, muzzle, NULL, NULL, end, ent->s.number, MASK_SHOT );
 
@@ -2161,7 +2161,7 @@ void WP_BotLaser( gentity_t *ent )
 
 	if ( traceEnt->takedamage)
 	{
-		G_Damage( traceEnt, ent, ent, forward, tr.endpos, BOT_LASER_DAMAGE, 0, MOD_TARGET_LASER );
+		G_Damage( traceEnt, ent, ent, _forward, tr.endpos, BOT_LASER_DAMAGE, 0, MOD_TARGET_LASER );
 	}
 
 	if ( !ent->s.loopSound )
@@ -2270,7 +2270,7 @@ void WP_BotRocket( gentity_t *ent )
 	gentity_t	*bolt;
 	vec3_t		start;
 
-	VectorMA( ent->currentOrigin, 6, forward, start );
+	VectorMA( ent->currentOrigin, 6, _forward, start );
 	VectorMA( start, 2, up, start );
 
 	bolt = G_Spawn();
@@ -2300,8 +2300,8 @@ void WP_BotRocket( gentity_t *ent )
 	bolt->s.pos.trType = TR_LINEAR;
 	bolt->s.pos.trTime = level.time;		// move a bit on the very first frame
 	VectorCopy( start, bolt->s.pos.trBase );
-	VectorScale( forward, BOT_ROCKET_SPEED, bolt->s.pos.trDelta );
-	VectorCopy( forward, bolt->movedir );
+	VectorScale( _forward, BOT_ROCKET_SPEED, bolt->s.pos.trDelta );
+	VectorCopy( _forward, bolt->movedir );
 	SnapVector( bolt->s.pos.trDelta );			// save net bandwidth
 	VectorCopy( start, bolt->currentOrigin );
 	VectorCopy( start, bolt->pos1 );
@@ -2373,7 +2373,7 @@ void WP_ForgeProjectile( gentity_t *ent )
 	bolt->s.pos.trType = TR_LINEAR;
 	bolt->s.pos.trTime = level.time;		// move a bit on the very first frame
 	VectorCopy( muzzle, bolt->s.pos.trBase );
-	VectorScale( forward, FORGE_PROJECTILE_VELOCITY, bolt->s.pos.trDelta );
+	VectorScale( _forward, FORGE_PROJECTILE_VELOCITY, bolt->s.pos.trDelta );
 	SnapVector( bolt->s.pos.trDelta );			// save net bandwidth
 	VectorCopy( muzzle, bolt->currentOrigin );
 }
@@ -2418,7 +2418,7 @@ void WP_ForgePsychicBlast( gentity_t *ent )
 	bolt->s.pos.trTime	= level.time;		// move a bit on the very first frame
 
 	VectorCopy( muzzle, bolt->s.pos.trBase );
-	VectorScale( forward, PSYCHIC_BLAST_VELOCITY, bolt->s.pos.trDelta );
+	VectorScale( _forward, PSYCHIC_BLAST_VELOCITY, bolt->s.pos.trDelta );
 
 	SnapVector( bolt->s.pos.trDelta );			// save net bandwidth
 	VectorCopy( muzzle, bolt->currentOrigin );
@@ -2462,7 +2462,7 @@ void WP_ParasiteAcid( gentity_t *ent )
 	bolt->s.pos.trType = TR_GRAVITY;
 	bolt->s.pos.trTime = level.time;								// move a bit on the very first frame
 	VectorCopy( muzzle, bolt->s.pos.trBase );
-	VectorScale( forward, PARASITE_VELOCITY, bolt->s.pos.trDelta );
+	VectorScale( _forward, PARASITE_VELOCITY, bolt->s.pos.trDelta );
 	bolt->s.pos.trDelta[2] += PARASITE_UPWARD_KICK;					// give the spurt a bit of an extra upward thrust so it'll travel a bit further.
 	SnapVector( bolt->s.pos.trDelta );								// save net bandwidth
 	VectorCopy( muzzle, bolt->currentOrigin );
@@ -2488,7 +2488,7 @@ void FireStasisGuyAttack( gentity_t *ent )
 
 	// Move the shot up by his hands
 	VectorMA( muzzle, 24, dir, start );
-	VectorCopy( forward, dir );
+	VectorCopy( _forward, dir );
 	VectorNormalize (dir);
 
 	bolt = G_Spawn();
@@ -2555,7 +2555,7 @@ void WP_SprayBlueHypo( gentity_t *ent )
 	//VectorMA( muzzle, 20, forward, muzzle );
 	//VectorMA( muzzle, 4, vright, muzzle );
 
-	VectorMA( muzzle, 24, forward, end );
+	VectorMA( muzzle, 24, _forward, end );
 
 	VectorSet( maxs, 6, 6, 6 );
 	VectorScale( maxs, -1, mins );
@@ -2569,11 +2569,11 @@ void WP_SprayBlueHypo( gentity_t *ent )
 		gentity_t	*t_ent;
 
 		// Create the effect -- thought something was needed here, but apparently not.
-		VectorMA( muzzle, 20, forward, muzzle );
+		VectorMA( muzzle, 20, _forward, muzzle );
 		VectorMA( muzzle, 4, vright, muzzle );
 		t_ent = G_TempEntity( muzzle, EV_HYPO_PUFF );
 		t_ent->s.eventParm = qfalse;
-		VectorCopy( forward, t_ent->pos1 );
+		VectorCopy( _forward, t_ent->pos1 );
 		return;
 	}
 
@@ -2582,7 +2582,7 @@ void WP_SprayBlueHypo( gentity_t *ent )
 	// This should only work on things that have a client
 	if ( tr_ent->client )
 	{
-		G_Damage( tr_ent, ent, ent, forward, tr.endpos, 0, DAMAGE_NO_DAMAGE, MOD_UNKNOWN );
+		G_Damage( tr_ent, ent, ent, _forward, tr.endpos, 0, DAMAGE_NO_DAMAGE, MOD_UNKNOWN );
 		//GEntity_PainFunc( tr_ent, ent, 1 );
 	}
 }
@@ -2598,7 +2598,7 @@ void WP_SprayRedHypo( gentity_t *ent )
 	//VectorMA( muzzle, 20, forward, muzzle );
 	//VectorMA( muzzle, 4, vright, muzzle );
 
-	VectorMA( muzzle, 24, forward, end );
+	VectorMA( muzzle, 24, _forward, end );
 
 	VectorSet( maxs, 6, 6, 6 );
 	VectorScale( maxs, -1, mins );
@@ -2612,11 +2612,11 @@ void WP_SprayRedHypo( gentity_t *ent )
 		gentity_t *t_ent;
 
 		// Create the effect -- thought something was needed here, but apparently not.
-		VectorMA( muzzle, 20, forward, muzzle );
+		VectorMA( muzzle, 20, _forward, muzzle );
 		VectorMA( muzzle, 4, vright, muzzle );
 		t_ent = G_TempEntity( muzzle, EV_HYPO_PUFF );
 		t_ent->s.eventParm = qtrue;
-		VectorCopy( forward, t_ent->pos1 );
+		VectorCopy( _forward, t_ent->pos1 );
 		return;
 	}
 
@@ -2668,7 +2668,7 @@ void WP_SprayVoyagerHypo( gentity_t *ent )
 	trace_t		tr;
 	vec3_t		mins, maxs, end;
 
-	VectorMA( muzzle, 32, forward, end );
+	VectorMA( muzzle, 32, _forward, end );
 
 	VectorSet( maxs, 6, 6, 6 );
 	VectorScale( maxs, -1, mins );
@@ -2680,11 +2680,11 @@ void WP_SprayVoyagerHypo( gentity_t *ent )
 		gentity_t	*t_ent;
 
 		// Create the effect -- thought something was needed here, but apparently not.
-		VectorMA( muzzle, 20, forward, muzzle );
+		VectorMA( muzzle, 20, _forward, muzzle );
 		VectorMA( muzzle, 4, vright, muzzle );
 		t_ent = G_TempEntity( muzzle, EV_HYPO_PUFF );
 		t_ent->s.eventParm = qfalse;
-		VectorCopy( forward, t_ent->pos1 );
+		VectorCopy( _forward, t_ent->pos1 );
 		return;
 	}
 
@@ -2711,7 +2711,7 @@ void WP_KnifeSwing( gentity_t *ent )
 	trace_t		tr;
 	vec3_t		mins, maxs, end;
 
-	VectorMA( muzzle, 64, forward, end );
+	VectorMA( muzzle, 64, _forward, end );
 
 	VectorSet( maxs, 6, 6, 6 );
 	VectorScale( maxs, -1, mins );
@@ -2728,7 +2728,7 @@ void WP_KnifeSwing( gentity_t *ent )
 	if ( tr_ent && tr_ent->takedamage )
 	{
 		G_Sound( tr_ent, G_SoundIndex( va("sound/enemies/harvester/stab%d", Q_irand(1, 3)) ) );
-		G_Damage( tr_ent, ent, ent, forward, tr.endpos, (g_spskill->integer*2)+1, DAMAGE_NO_KNOCKBACK, MOD_MELEE );
+		G_Damage( tr_ent, ent, ent, _forward, tr.endpos, (g_spskill->integer*2)+1, DAMAGE_NO_KNOCKBACK, MOD_MELEE );
 	}
 }
 
@@ -2758,7 +2758,7 @@ void WP_PaladinShot( gentity_t *ent )
 	bolt->s.pos.trTime	= level.time;		// move a bit on the very first frame
 
 	VectorCopy( muzzle, bolt->s.pos.trBase );
-	VectorScale( forward, PALADIN_VELOCITY, bolt->s.pos.trDelta );
+	VectorScale( _forward, PALADIN_VELOCITY, bolt->s.pos.trDelta );
 
 	SnapVector( bolt->s.pos.trDelta );			// save net bandwidth
 	VectorCopy( muzzle, bolt->currentOrigin);
@@ -2779,8 +2779,8 @@ void WP_DesperadoShot( gentity_t *ent )
 
 	VectorCopy( muzzle, start );
 
-	VectorMA( start, -8, forward, start );
-	VectorMA( start, 8192, forward, end );
+	VectorMA( start, -8, _forward, start );
+	VectorMA( start, 8192, _forward, end );
 
 	gi.trace ( &tr, start, NULL, NULL, end, ent->s.number, MASK_SHOT );
 
@@ -2820,7 +2820,7 @@ void WP_DesperadoShot( gentity_t *ent )
 	} 
 
 	if ( traceEnt->takedamage && do_damage )
-		G_Damage( traceEnt, ent, ent, forward, tr.endpos, DESPERADO_DAMAGE*(g_spskill->integer+1), 0, MOD_CRIFLE );
+		G_Damage( traceEnt, ent, ent, _forward, tr.endpos, DESPERADO_DAMAGE*(g_spskill->integer+1), 0, MOD_CRIFLE );
 }
 
 //---------------------------------------------------------
@@ -3007,10 +3007,10 @@ void FireWeapon( gentity_t *ent, qboolean alt_fire )
 	ent->client->ps.persistant[PERS_ACCURACY_SHOTS]++;
 
 	// set aiming directions
-	AngleVectors (ent->client->ps.viewangles, forward, vright, up);
+	AngleVectors (ent->client->ps.viewangles, _forward, vright, up);
 
 	ent->alt_fire = alt_fire;
-	CalcMuzzlePoint ( ent, forward, vright, up, muzzle , 0);
+	CalcMuzzlePoint ( ent, _forward, vright, up, muzzle , 0);
 
 	// fire the specific weapon
 	switch( ent->s.weapon ) 
@@ -3198,13 +3198,13 @@ void UseCharge (int entityNum)
 	}
 	else
 	{
-		AngleVectors (ent->client->ps.viewangles, forward, vright, up);
+		AngleVectors (ent->client->ps.viewangles, _forward, vright, up);
 
-		CalcMuzzlePoint ( ent, forward, vright, up, muzzle, 0 );
+		CalcMuzzlePoint ( ent, _forward, vright, up, muzzle, 0 );
 
-		VectorNormalize( forward );
-		VectorMA(muzzle, -4, forward, muzzle);
-		drop_charge (ent, muzzle, forward);
+		VectorNormalize( _forward );
+		VectorMA(muzzle, -4, _forward, muzzle);
+		drop_charge (ent, muzzle, _forward);
 
 		ent->client->ps.eFlags |= EF_PLANTED_CHARGE;
 	}

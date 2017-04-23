@@ -1099,7 +1099,7 @@ void stasis_shooter_active( gentity_t *self )
 	//Get a number of entities in a given space
 	numEnts = gi.EntitiesInBox( mins, maxs, radiusEnts, 1024 );
 
-	for ( i = 0; i < numEnts; i++ )
+	for ( int i = 0; i < numEnts; i++ )
 	{
 		//Don't consider self
 		if ( radiusEnts[i] == self )
