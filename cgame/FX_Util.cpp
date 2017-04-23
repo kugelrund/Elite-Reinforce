@@ -152,7 +152,7 @@ void FX_Add( void )
 
 		activeAverage /= ACTIVE_RESOLUTION;
 
-		for ( i = 0; i < ACTIVE_RESOLUTION; i++ )
+		for ( int i = 0; i < ACTIVE_RESOLUTION; i++ )
 			activeTable[ i ] = 0;
 	}
 
@@ -190,7 +190,7 @@ FX_state_t *FX_FindNextValid( void )
 
 		hopAverage /= HOP_RESOLUTION;
 
-		for ( i = 0; i < HOP_RESOLUTION; i++ )
+		for ( int i = 0; i < HOP_RESOLUTION; i++ )
 			hopTable[ i ] = 0;
 	}
 
