@@ -1390,7 +1390,7 @@ void G_Damage( gentity_t *targ, gentity_t *inflictor, gentity_t *attacker, vec3_
 	{
 		knockback = 0;
 	}
-	else if ( targ->client && attacker->client && targ->client->playerTeam == attacker->client->playerTeam )
+	else if ( !g_teamKnockback->integer && targ->client && attacker->client && targ->client->playerTeam == attacker->client->playerTeam )
 	{
 		knockback = 0;
 	}

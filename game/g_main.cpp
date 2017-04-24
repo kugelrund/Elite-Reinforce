@@ -27,6 +27,7 @@ cvar_t	*g_cheats;
 cvar_t	*g_developer;
 cvar_t	*g_timescale;
 cvar_t	*g_knockback;
+cvar_t	*g_teamKnockback;
 cvar_t	*g_inactivity;
 cvar_t	*g_debugMove;
 cvar_t	*g_debugDamage;
@@ -145,6 +146,7 @@ void G_InitCvars( void ) {
 	g_sex = gi.cvar ("sex", "male", CVAR_USERINFO | CVAR_ARCHIVE );
 	g_spskill = gi.cvar ("g_spskill", "0", CVAR_ARCHIVE | CVAR_USERINFO);	//using userinfo as savegame flag
 	g_knockback = gi.cvar( "g_knockback", "1000", 0 );
+	g_teamKnockback = gi.cvar( "g_teamKnockback", "0", 0 );
 	g_inactivity = gi.cvar ("g_inactivity", "0", 0);
 	g_debugMove = gi.cvar ("g_debugMove", "0", 0);
 	g_debugDamage = gi.cvar ("g_debugDamage", "0", 0);
