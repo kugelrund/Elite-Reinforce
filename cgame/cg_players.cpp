@@ -2235,8 +2235,6 @@ void CG_LightningBolt( centity_t *cent, vec3_t origin )
 		break;
 
 	case WP_DREADNOUGHT:
-		vec3_t org;
-
 		// Move the beam back a bit to help cover up the poly edges on the fire beam
 		VectorMA( origin, -4, forward, org );
 		FX_DreadnoughtFire( org, trace.endpos, trace.plane.normal, spark );
