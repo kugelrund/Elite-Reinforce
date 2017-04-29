@@ -56,20 +56,23 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>.\Release\</OutDir>
-    <IntDir>.\Release\</IntDir>
+    <OutDir>$(SolutionDir)\$(Configuration)\</OutDir>
+    <IntDir>$(ProjectDir)\$(Configuration)\</IntDir>
     <LinkIncremental>false</LinkIncremental>
+    <TargetName>efuix86</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>.\Debug\</OutDir>
-    <IntDir>.\Debug\</IntDir>
+    <OutDir>$(SolutionDir)\$(Configuration)\</OutDir>
+    <IntDir>$(ProjectDir)\$(Configuration)\</IntDir>
     <LinkIncremental>true</LinkIncremental>
     <IgnoreImportLibrary>true</IgnoreImportLibrary>
+    <TargetName>efuix86</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='FinalBuild|Win32'">
-    <OutDir>.\FinalBuild\</OutDir>
-    <IntDir>.\FinalBuild\</IntDir>
+    <OutDir>$(SolutionDir)\$(Configuration)\</OutDir>
+    <IntDir>$(ProjectDir)\$(Configuration)\</IntDir>
     <LinkIncremental>false</LinkIncremental>
+    <TargetName>efuix86</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -106,8 +109,6 @@
       <LinkDLL>true</LinkDLL>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
-      <OutputFile>../Release/efuix86.dll</OutputFile>
-      <ImportLibrary>.\Release\efuix86.lib</ImportLibrary>
       <BaseAddress>0x40000000</BaseAddress>
       <ModuleDefinitionFile>.\ui.def</ModuleDefinitionFile>
     </Link>
@@ -150,8 +151,6 @@
       <LinkDLL>true</LinkDLL>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
-      <OutputFile>../Debug/efuix86.dll</OutputFile>
-      <ImportLibrary>.\Debug\efuix86.lib</ImportLibrary>
       <BaseAddress>0x40000000</BaseAddress>
       <ModuleDefinitionFile>.\ui.def</ModuleDefinitionFile>
     </Link>
@@ -191,8 +190,6 @@
       <LinkDLL>true</LinkDLL>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
-      <OutputFile>../FinalBuild/efuix86.dll</OutputFile>
-      <ImportLibrary>.\FinalBuild\efuix86.lib</ImportLibrary>
       <BaseAddress>0x40000000</BaseAddress>
       <ModuleDefinitionFile>.\ui.def</ModuleDefinitionFile>
     </Link>
