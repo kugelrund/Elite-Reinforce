@@ -325,7 +325,7 @@ qboolean NPC_CheckCanAttack (float attack_scale, qboolean stationary)
 	return attack_ok;
 }
 
-qboolean NPC_StandTrackAndShoot (gentity_t *NPC, qboolean canDuck)
+qboolean NPC_StandTrackAndShoot (qboolean canDuck)
 {
 	qboolean	attack_ok = qfalse;
 	qboolean	duck_ok = qfalse;
@@ -768,7 +768,7 @@ void NPC_BSStandAndShoot (void)
 		//Let's check and see if we're still at our hiding spot
 		NPC_KeepHidingGoal(qtrue);
 
-		if(!NPC_StandTrackAndShoot( NPC, qtrue ))
+		if(!NPC_StandTrackAndShoot( qtrue ))
 		{//That func didn't update our angles
 			NPCInfo->desiredYaw = NPC->client->ps.viewangles[YAW];
 			NPCInfo->desiredPitch = NPC->client->ps.viewangles[PITCH];
@@ -837,7 +837,7 @@ void NPC_BSRunAndShoot (void)
 	if ( NPC->enemy )
 	{
 		int monitor = NPC->cantHitEnemyCounter;
-		NPC_StandTrackAndShoot( NPC, (NPCInfo->hidingGoal != NULL) );
+		NPC_StandTrackAndShoot( NPCInfo->hidingGoal != NULL );
 
 		if ( !(ucmd.buttons & BUTTON_ATTACK) && ucmd.upmove >= 0 && NPC->cantHitEnemyCounter > monitor )
 		{//not crouching and not firing
