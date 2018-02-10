@@ -28,6 +28,7 @@ cvar_t	*g_developer;
 cvar_t	*g_timescale;
 cvar_t	*g_knockback;
 cvar_t	*g_teamKnockback;
+cvar_t	*g_skipDialogs;
 cvar_t	*g_inactivity;
 cvar_t	*g_debugMove;
 cvar_t	*g_debugDamage;
@@ -147,6 +148,7 @@ void G_InitCvars( void ) {
 	g_spskill = gi.cvar ("g_spskill", "0", CVAR_ARCHIVE | CVAR_USERINFO);	//using userinfo as savegame flag
 	g_knockback = gi.cvar( "g_knockback", "1000", 0 );
 	g_teamKnockback = gi.cvar( "g_teamKnockback", "0", 0 );
+	g_skipDialogs = gi.cvar( "g_skipDialogs", "0", 0 );
 	g_inactivity = gi.cvar ("g_inactivity", "0", 0);
 	g_debugMove = gi.cvar ("g_debugMove", "0", 0);
 	g_debugDamage = gi.cvar ("g_debugDamage", "0", 0);
@@ -170,7 +172,7 @@ extern void Q3_SetPrecacheFile (const char *file);	//q3_interface
 // I'm just declaring a global here which I need to get at in NAV_GenerateSquadPaths for deciding if pre-calc'd
 //	data is valid, and this saves changing the proto of G_SpawnEntitiesFromString() to include a checksum param which
 //	may get changed anyway if a new nav system is ever used. This way saves messing with g_local.h each time -slc
-int giMapChecksum;	
+int giMapChecksum;
 SavedGameJustLoaded_e g_eSavedGameJustLoaded;
 qboolean g_qbLoadTransition = qfalse;
 void InitGame(  const char *mapname, const char *spawntarget, int checkSum, const char *entities, int levelTime, int randomSeed, int globalTime, SavedGameJustLoaded_e eSavedGameJustLoaded, qboolean qbLoadTransition )
@@ -227,13 +229,13 @@ void InitGame(  const char *mapname, const char *spawntarget, int checkSum, cons
 
 	//Load bolt-on list
 	G_LoadBoltOns();
-	
+
 	//Sets intial squadpoint data
 	G_SquadPathsInit();
 
 	//Set up NPC init data
 	NPC_InitGame();
-	
+
 	TIMER_Clear();
 
 	//
@@ -283,7 +285,7 @@ void InitGame(  const char *mapname, const char *spawntarget, int checkSum, cons
 	if ( navCalculatePaths )
 	{
 		NAV_CalculatePaths( mapname, checkSum );
-		
+
 		navigator.CalculatePaths();
 
 		if ( navigator.Save( mapname, checkSum ) == qfalse )
@@ -449,11 +451,11 @@ FUNCTIONS CALLED EVERY FRAME
 ========================================================================
 */
 
-void G_CheckTasksCompleted (gentity_t *ent) 
+void G_CheckTasksCompleted (gentity_t *ent)
 {
 	if ( Q3_TaskIDPending( ent, TID_CHAN_VOICE ) )
 	{
-		if ( !gi.S_Override[ent->s.number] )
+		if ( !gi.S_Override[ent->s.number] || g_skipDialogs->integer )
 		{//not playing a voice sound
 			//return task_complete
 			Q3_TaskIDComplete( ent, TID_CHAN_VOICE );
@@ -479,7 +481,7 @@ G_RunThink
 Runs thinking code for this frame if necessary
 =============
 */
-void G_RunThink (gentity_t *ent) 
+void G_RunThink (gentity_t *ent)
 {
 	float	thinktime;
 
@@ -494,16 +496,16 @@ void G_RunThink (gentity_t *ent)
 	*/
 
 	thinktime = ent->nextthink;
-	if ( thinktime <= 0 ) 
+	if ( thinktime <= 0 )
 	{
 		goto runicarus;
 	}
-	
-	if ( thinktime > level.time ) 
+
+	if ( thinktime > level.time )
 	{
 		goto runicarus;
 	}
-	
+
 	ent->nextthink = 0;
 	if ( ent->e_ThinkFunc == thinkF_NULL )	// actually you don't need this if I check for it in the next function -slc
 	{
@@ -801,11 +803,11 @@ void G_RunFrame( int levelTime ) {
 	level.previousTime = level.time;
 	level.time = levelTime;
 	msec = level.time - level.previousTime;
-	
+
 	ResetTeamCounters();
-	
+
 	//remember last waypoint, clear current one
-	for ( i = 0, ent = &g_entities[0]; i < globals.num_entities ; i++, ent++) 
+	for ( i = 0, ent = &g_entities[0]; i < globals.num_entities ; i++, ent++)
 	{
 		if ( ent->waypoint != WAYPOINT_NONE )
 		{
@@ -874,26 +876,26 @@ void G_RunFrame( int levelTime ) {
 			G_AnimateBoltOns( ent );
 		}
 
-		if ( ent->s.eType == ET_MISSILE ) 
+		if ( ent->s.eType == ET_MISSILE )
 		{
 			G_RunMissile( ent );
 			continue;
 		}
 
-		if ( ent->s.eType == ET_ITEM ) 
+		if ( ent->s.eType == ET_ITEM )
 		{
 			G_RunItem( ent );
 			continue;
 		}
 
-		if ( ent->s.eType == ET_MOVER ) 
+		if ( ent->s.eType == ET_MOVER )
 		{
 			G_RunMover( ent );
 			continue;
 		}
 
 		//The player
-		if ( i == 0 ) 
+		if ( i == 0 )
 		{
 			G_CheckEndLevelTimers( ent );
 			//Recalculate the nearest waypoint for the coming NPC updates
@@ -939,7 +941,7 @@ void G_RunFrame( int levelTime ) {
 extern qboolean player_locked;
 
 void G_LoadSave_WriteMiscData(void)
-{ 
+{
 	gi.AppendToSaveGame('LCKD', &player_locked, sizeof(player_locked));
 }
 
