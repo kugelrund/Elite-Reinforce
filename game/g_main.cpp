@@ -27,8 +27,6 @@ cvar_t	*g_cheats;
 cvar_t	*g_developer;
 cvar_t	*g_timescale;
 cvar_t	*g_knockback;
-cvar_t	*g_teamKnockback;
-cvar_t	*g_skipDialogs;
 cvar_t	*g_inactivity;
 cvar_t	*g_debugMove;
 cvar_t	*g_debugDamage;
@@ -39,6 +37,10 @@ cvar_t	*g_ICARUSDebug;
 cvar_t	*com_buildScript;
 cvar_t	*g_skippingcin;
 cvar_t	*g_virtualVoyager;
+
+// new additions for Elite Reinforce
+cvar_t	*g_skipDialogs;
+cvar_t	*g_teamKnockback;
 
 qboolean	stop_icarus = qfalse;
 
@@ -147,8 +149,6 @@ void G_InitCvars( void ) {
 	g_sex = gi.cvar ("sex", "male", CVAR_USERINFO | CVAR_ARCHIVE );
 	g_spskill = gi.cvar ("g_spskill", "0", CVAR_ARCHIVE | CVAR_USERINFO);	//using userinfo as savegame flag
 	g_knockback = gi.cvar( "g_knockback", "1000", 0 );
-	g_teamKnockback = gi.cvar( "g_teamKnockback", "0", 0 );
-	g_skipDialogs = gi.cvar( "g_skipDialogs", "0", 0 );
 	g_inactivity = gi.cvar ("g_inactivity", "0", 0);
 	g_debugMove = gi.cvar ("g_debugMove", "0", 0);
 	g_debugDamage = gi.cvar ("g_debugDamage", "0", 0);
@@ -159,6 +159,10 @@ void G_InitCvars( void ) {
 	g_subtitles = gi.cvar ("g_subtitles", "2", CVAR_ARCHIVE);
 	g_language = gi.cvar ("g_language", "", CVAR_ARCHIVE | CVAR_NORESTART);
 	com_buildScript = gi.cvar ("com_buildscript", "0", 0);
+
+	// new additions for Elite Reinforce
+	g_skipDialogs = gi.cvar( "g_skipDialogs", "0", CVAR_ARCHIVE );
+	g_teamKnockback = gi.cvar( "g_teamKnockback", "0", CVAR_CHEAT );
 }
 
 /*

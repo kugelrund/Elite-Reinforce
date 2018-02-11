@@ -166,7 +166,6 @@ extern	cvar_t	*g_speed;
 extern	cvar_t	*g_cheats;
 extern	cvar_t	*g_developer;
 extern	cvar_t	*g_knockback;
-extern	cvar_t	*g_teamKnockback;
 extern	cvar_t	*g_inactivity;
 extern	cvar_t	*g_debugMove;
 extern	cvar_t	*g_subtitles;
@@ -176,6 +175,10 @@ extern	cvar_t	*g_removeDoors;
 extern	cvar_t	*g_ICARUSDebug;
 
 extern	cvar_t	*g_virtualVoyager;
+
+// new additions for Elite Reinforce
+extern	cvar_t	*g_teamKnockback;
+
 //
 // g_spawn.c
 //
