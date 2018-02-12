@@ -251,6 +251,9 @@ void	G_TouchTriggersLerped( gentity_t *ent ) {
 
 	VectorSubtract( ent->currentOrigin, ent->lastOrigin, diff );
 	dist = VectorNormalize( diff );
+	if ( !isfinite(dist) ) {
+		return;
+	}
 
 	memset (touched, qfalse, sizeof(touched) );
 
