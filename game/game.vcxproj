@@ -245,6 +245,8 @@
     <ClCompile Include="..\Icarus\Sequence.cpp" />
     <ClCompile Include="..\Icarus\Sequencer.cpp" />
     <ClCompile Include="..\Icarus\TaskManager.cpp" />
+    <ClCompile Include="..\speedrun\overbounce_prediction\OverbouncePrediction.cpp" />
+    <ClCompile Include="..\speedrun\PlayerOverbouncePrediction.cpp" />
     <ClCompile Include="..\ui\gameinfo.cpp" />
     <ClCompile Include="AI_Avatar.cpp" />
     <ClCompile Include="AI_Borg.cpp" />
@@ -347,6 +349,9 @@
     <ClInclude Include="..\Icarus\TaskManager.h" />
     <ClInclude Include="..\Icarus\Tokenizer.h" />
     <ClInclude Include="..\renderer\tr_types.h" />
+    <ClInclude Include="..\speedrun\overbounce_prediction\OverbouncePrediction.hpp" />
+    <ClInclude Include="..\speedrun\overbounce_prediction\RingBuffer.hpp" />
+    <ClInclude Include="..\speedrun\PlayerOverbouncePrediction.hpp" />
     <ClInclude Include="..\ui\gameinfo.h" />
     <ClInclude Include="AI.h" />
     <ClInclude Include="anims.h" />

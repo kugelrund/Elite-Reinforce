@@ -598,6 +598,9 @@ extern	vmCvar_t		fx_memoryInfo;
 extern	vmCvar_t		cg_virtualVoyager;
 extern	vmCvar_t		cg_missionInfoFlashTime;
 
+// Additions for Elite Reinforce
+extern	vmCvar_t		cg_drawOverbounceInfo;
+
 
 void CG_NewClientinfo( int clientNum );
 //

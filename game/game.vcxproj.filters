@@ -29,6 +29,12 @@
       <UniqueIdentifier>{2836153a-d408-4dbc-bae4-7d925f414918}</UniqueIdentifier>
       <Extensions>*.h</Extensions>
     </Filter>
+    <Filter Include="speedrun">
+      <UniqueIdentifier>{bbd14b31-fdbb-4752-be95-6f0e68f533ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="speedrun\overbounce_detection">
+      <UniqueIdentifier>{8274f179-acec-49f7-b9e1-cd2dc29cfbf4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AI_Avatar.cpp">
@@ -412,6 +418,12 @@
     <ClCompile Include="..\cgame\FX_Vohrsoth.cpp">
       <Filter>Cgame</Filter>
     </ClCompile>
+    <ClCompile Include="..\speedrun\overbounce_prediction\OverbouncePrediction.cpp">
+      <Filter>speedrun\overbounce_detection</Filter>
+    </ClCompile>
+    <ClCompile Include="..\speedrun\PlayerOverbouncePrediction.cpp">
+      <Filter>speedrun</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AI.h">
@@ -569,6 +581,15 @@
     </ClInclude>
     <ClInclude Include="..\Icarus\Tokenizer.h">
       <Filter>Icarus Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\speedrun\overbounce_prediction\OverbouncePrediction.hpp">
+      <Filter>speedrun\overbounce_detection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\speedrun\overbounce_prediction\RingBuffer.hpp">
+      <Filter>speedrun\overbounce_detection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\speedrun\PlayerOverbouncePrediction.hpp">
+      <Filter>speedrun</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

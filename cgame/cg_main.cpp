@@ -5,6 +5,7 @@
 #include "cg_text.h"
 #include "..\game\characters.h"
 #include "..\game\speakers.h"
+#include "..\speedrun\PlayerOverbouncePrediction.hpp"
 
 //NOTENOTE: Be sure to change the mirrored code in g_shared.h
 typedef	map< string, unsigned char, less<string>, allocator< unsigned char >  >	namePrecache_m;
@@ -117,6 +118,8 @@ vmCvar_t	fx_memoryInfo;
 vmCvar_t	cg_virtualVoyager;
 vmCvar_t	cg_missionInfoFlashTime;
 
+// Additions for Elite Reinforce
+vmCvar_t	cg_drawOverbounceInfo;
 
 
 typedef struct {
@@ -191,6 +194,9 @@ cvarTable_t		cvarTable[] = {
 	{ &cg_language,	"g_language", "", CVAR_ARCHIVE | CVAR_NORESTART},
 	{ &cg_virtualVoyager, "cg_virtualvoyager", "0", CVAR_NORESTART },
 	{ &cg_missionInfoFlashTime, "cg_missionInfoFlashTime", "15000", CVAR_ARCHIVE  },
+	
+	// Additions for Elite Reinforce
+	{ &cg_drawOverbounceInfo, "cg_drawOverbounceInfo", "0", CVAR_ARCHIVE },
 };
 
 int		cvarTableSize = sizeof( cvarTable ) / sizeof( cvarTable[0] );
@@ -1401,6 +1407,7 @@ Called before every level change or subsystem restart
 void CG_Shutdown( void ) 
 {
 	FX_Free();
+	playerOverbouncePredictor.reset();
 }
 
 //// DEBUG STUFF

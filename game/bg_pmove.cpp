@@ -11,6 +11,7 @@
 #include "g_local.h"			   
 #include "anims.h"
 #include "../cgame/cg_local.h"	// yeah I know this is naughty, but we're shipping soon...
+#include "../speedrun/overbounce_prediction/OverbouncePrediction.hpp"
 
 extern	qboolean	Q3_TaskIDPending( gentity_t *ent, taskID_t taskType );
 extern void AddSoundEvent( gentity_t *owner, vec3_t position, float radius, alertEventLevel_e alertLevel );
@@ -2490,6 +2491,9 @@ void Pmove( pmove_t *pmove )
 	VectorCopy (pm->ps->velocity, pml.previous_velocity);
 
 	pml.frametime = pml.msec * 0.001;
+	if ( cg_drawOverbounceInfo.integer && pm->ps->clientNum == 0 ) {
+		OverbouncePrediction::reportLastFrametime( pml.frametime );
+	}
 
 	// update the viewangles
 	PM_UpdateViewAngles( pm->ps, &pm->cmd, pm->gent);

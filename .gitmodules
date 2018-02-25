@@ -1,0 +1,3 @@
+[submodule "speedrun/overbounce_prediction"]
+	path = speedrun/overbounce_prediction
+	url = https://github.com/kugelrund/overbounce_prediction.git
