@@ -7,6 +7,7 @@
 #include "..\game\objectives.h"
 #include "..\game\speakers.h"
 #include "..\speedrun\PlayerOverbouncePrediction.hpp"
+#include "..\speedrun\strafe_helper\StrafeHelper.hpp"
 
 
 qboolean G_ParseInt( char **data, int *i );
@@ -2392,6 +2393,17 @@ static void CG_DrawOverbounceInfo( void ) {
 }
 
 /*
+====================
+CG_DrawStrafeHelper
+====================
+*/
+static void CG_DrawStrafeHelper( void ) {
+	StrafeHelper::setScale(cg_strafeHelperScale.value);
+	StrafeHelper::draw(cg_strafeHelperCenter.integer, cg_strafeHelperCenterMarker.integer,
+	                   cg_strafeHelperHeight.value, cg_strafeHelperY.value);
+}
+
+/*
 =================
 CG_Draw2D
 =================
@@ -2440,6 +2452,11 @@ static void CG_Draw2D( void )
 	// don't draw any status if dead
 	if ( cg.snap->ps.stats[STAT_HEALTH] > 0 ) 
 	{
+		if ( cg_drawStrafeHelper.integer )
+		{
+			CG_DrawStrafeHelper();
+		}
+
 		CG_DrawTeleportEffects();
 		CG_DrawStats();
 		CG_DrawAmmoWarning();

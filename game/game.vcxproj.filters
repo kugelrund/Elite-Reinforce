@@ -35,6 +35,9 @@
     <Filter Include="speedrun\overbounce_detection">
       <UniqueIdentifier>{8274f179-acec-49f7-b9e1-cd2dc29cfbf4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="speedrun\strafe_helper">
+      <UniqueIdentifier>{3af9e8d6-b9f7-46ec-9d62-ee78ae8ed6cc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AI_Avatar.cpp">
@@ -424,6 +427,9 @@
     <ClCompile Include="..\speedrun\PlayerOverbouncePrediction.cpp">
       <Filter>speedrun</Filter>
     </ClCompile>
+    <ClCompile Include="..\speedrun\strafe_helper\StrafeHelper.cpp">
+      <Filter>speedrun\strafe_helper</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AI.h">
@@ -590,6 +596,9 @@
     </ClInclude>
     <ClInclude Include="..\speedrun\PlayerOverbouncePrediction.hpp">
       <Filter>speedrun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\speedrun\strafe_helper\StrafeHelper.hpp">
+      <Filter>speedrun\strafe_helper</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

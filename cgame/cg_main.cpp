@@ -120,6 +120,12 @@ vmCvar_t	cg_missionInfoFlashTime;
 
 // Additions for Elite Reinforce
 vmCvar_t	cg_drawOverbounceInfo;
+vmCvar_t	cg_drawStrafeHelper;
+vmCvar_t	cg_strafeHelperCenter;
+vmCvar_t	cg_strafeHelperCenterMarker;
+vmCvar_t	cg_strafeHelperHeight;
+vmCvar_t	cg_strafeHelperScale;
+vmCvar_t	cg_strafeHelperY;
 
 
 typedef struct {
@@ -197,6 +203,12 @@ cvarTable_t		cvarTable[] = {
 	
 	// Additions for Elite Reinforce
 	{ &cg_drawOverbounceInfo, "cg_drawOverbounceInfo", "0", CVAR_ARCHIVE },
+	{ &cg_drawStrafeHelper, "cg_drawStrafeHelper", "0", CVAR_ARCHIVE },
+	{ &cg_strafeHelperCenter, "cg_strafeHelperCenter", "1", CVAR_ARCHIVE },
+	{ &cg_strafeHelperCenterMarker, "cg_strafeHelperCenterMarker", "1", CVAR_ARCHIVE },
+	{ &cg_strafeHelperHeight, "cg_strafeHelperHeight", "20", CVAR_ARCHIVE },
+	{ &cg_strafeHelperScale, "cg_strafeHelperScale", "4", CVAR_ARCHIVE },
+	{ &cg_strafeHelperY, "cg_strafeHelperY", "50", CVAR_ARCHIVE },
 };
 
 int		cvarTableSize = sizeof( cvarTable ) / sizeof( cvarTable[0] );

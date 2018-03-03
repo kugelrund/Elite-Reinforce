@@ -1,3 +1,6 @@
 [submodule "speedrun/overbounce_prediction"]
 	path = speedrun/overbounce_prediction
 	url = https://github.com/kugelrund/overbounce_prediction.git
+[submodule "speedrun/strafe_helper"]
+	path = speedrun/strafe_helper
+	url = https://github.com/kugelrund/strafe_helper.git

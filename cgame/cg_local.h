@@ -600,6 +600,12 @@ extern	vmCvar_t		cg_missionInfoFlashTime;
 
 // Additions for Elite Reinforce
 extern	vmCvar_t		cg_drawOverbounceInfo;
+extern	vmCvar_t		cg_drawStrafeHelper;
+extern	vmCvar_t		cg_strafeHelperCenter;
+extern	vmCvar_t		cg_strafeHelperCenterMarker;
+extern	vmCvar_t		cg_strafeHelperHeight;
+extern	vmCvar_t		cg_strafeHelperScale;
+extern	vmCvar_t		cg_strafeHelperY;
 
 
 void CG_NewClientinfo( int clientNum );
