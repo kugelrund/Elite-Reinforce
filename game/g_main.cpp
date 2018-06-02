@@ -41,6 +41,7 @@ cvar_t	*g_virtualVoyager;
 // new additions for Elite Reinforce
 cvar_t	*g_skipDialogs;
 cvar_t	*g_teamKnockback;
+cvar_t	*g_fixFreezeBorg1;
 
 qboolean	stop_icarus = qfalse;
 
@@ -163,6 +164,7 @@ void G_InitCvars( void ) {
 	// new additions for Elite Reinforce
 	g_skipDialogs = gi.cvar( "g_skipDialogs", "0", CVAR_ARCHIVE );
 	g_teamKnockback = gi.cvar( "g_teamKnockback", "0", CVAR_CHEAT );
+	g_fixFreezeBorg1 = gi.cvar( "g_fixFreezeBorg1", "1", CVAR_ARCHIVE );
 }
 
 /*

@@ -178,6 +178,7 @@ extern	cvar_t	*g_virtualVoyager;
 
 // new additions for Elite Reinforce
 extern	cvar_t	*g_teamKnockback;
+extern	cvar_t	*g_fixFreezeBorg1;
 
 //
 // g_spawn.c
