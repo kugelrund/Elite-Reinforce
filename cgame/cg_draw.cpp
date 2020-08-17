@@ -8,6 +8,7 @@
 #include "..\game\speakers.h"
 #include "..\speedrun\PlayerOverbouncePrediction.hpp"
 #include "..\speedrun\strafe_helper\StrafeHelper.hpp"
+#include <cmath>
 
 
 qboolean G_ParseInt( char **data, int *i );
