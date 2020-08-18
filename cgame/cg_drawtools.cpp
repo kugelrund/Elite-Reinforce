@@ -799,7 +799,7 @@ static int specialBigPropChars[CHARMAX][2] = {
 CG_DrawProportionalString2
 =================
 */
-static void CG_DrawProportionalString2( int x, int y, const char* str, vec4_t color, int style, qhandle_t charset )
+static void CG_DrawProportionalString2( int x, int y, const char* str, const vec4_t color, int style, qhandle_t charset )
 {
 	const char* s;
 	unsigned char ch;
@@ -940,7 +940,7 @@ static void CG_DrawProportionalString2( int x, int y, const char* str, vec4_t co
 CG_DrawProportionalString
 =================
 */
-void CG_DrawProportionalString( int x, int y, const char* str, int style, vec4_t color ) 
+void CG_DrawProportionalString( int x, int y, const char* str, int style, const vec4_t color )
 {
 	vec4_t	drawcolor;
 	int		width;

@@ -670,7 +670,7 @@ void CG_DrawString( float x, float y, const char *string,
 void CG_PrintInterfaceGraphics(int min,int max);
 void CG_DrawNumField (int x, int y, int width, int value,int charWidth,int charHeight,int style,qboolean zeroFill);
 void CG_PrintScreenGraphics(screengraphics_s *screenGraphics,int maxI);
-void CG_DrawProportionalString( int x, int y, const char* str, int style, vec4_t color );
+void CG_DrawProportionalString( int x, int y, const char* str, int style, const vec4_t color );
 int CG_ProportionalStringWidth( const char* str,int style );
 void CG_LoadFonts(void);
 
