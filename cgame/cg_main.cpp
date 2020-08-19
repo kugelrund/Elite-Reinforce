@@ -125,6 +125,8 @@ vmCvar_t	cg_strafeHelperCenter;
 vmCvar_t	cg_strafeHelperCenterMarker;
 vmCvar_t	cg_strafeHelperHeight;
 vmCvar_t	cg_strafeHelperScale;
+vmCvar_t	cg_strafeHelperSpeedScale;
+vmCvar_t	cg_strafeHelperSpeedY;
 vmCvar_t	cg_strafeHelperY;
 
 
@@ -208,6 +210,8 @@ cvarTable_t		cvarTable[] = {
 	{ &cg_strafeHelperCenterMarker, "cg_strafeHelperCenterMarker", "1", CVAR_ARCHIVE },
 	{ &cg_strafeHelperHeight, "cg_strafeHelperHeight", "20", CVAR_ARCHIVE },
 	{ &cg_strafeHelperScale, "cg_strafeHelperScale", "4", CVAR_ARCHIVE },
+	{ &cg_strafeHelperSpeedScale, "cg_strafeHelperSpeedScale", "2", CVAR_ARCHIVE },
+	{ &cg_strafeHelperSpeedY, "cg_strafeHelperSpeedY", "5", CVAR_ARCHIVE },
 	{ &cg_strafeHelperY, "cg_strafeHelperY", "50", CVAR_ARCHIVE },
 };
 

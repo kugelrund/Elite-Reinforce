@@ -605,6 +605,8 @@ extern	vmCvar_t		cg_strafeHelperCenter;
 extern	vmCvar_t		cg_strafeHelperCenterMarker;
 extern	vmCvar_t		cg_strafeHelperHeight;
 extern	vmCvar_t		cg_strafeHelperScale;
+extern	vmCvar_t		cg_strafeHelperSpeedScale;
+extern	vmCvar_t		cg_strafeHelperSpeedY;
 extern	vmCvar_t		cg_strafeHelperY;
 
 
