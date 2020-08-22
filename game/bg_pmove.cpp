@@ -2631,5 +2631,7 @@ void Pmove( pmove_t *pmove )
 	PM_WaterEvents();
 
 	// snap some parts of playerstate to save network bandwidth
-	SnapVector( pm->ps->velocity );
+	if ( g_snapVelocity->integer ) {
+		SnapVector( pm->ps->velocity );
+	}
 }
