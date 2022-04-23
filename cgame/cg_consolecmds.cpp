@@ -88,6 +88,60 @@ static void CG_InfoUp_f( void )
 }*/
 #endif
 
+
+/*
+===================
+CG_SaveHolodeck_f
+===================
+*/
+void CG_SaveHolodeck_f (void) {
+	const char* info = CG_ConfigString( CS_SERVERINFO );
+	const char* orig_mapname = Info_ValueForKey( info, "mapname" );
+
+	if (orig_mapname[0] != '_') {
+		CG_Printf( "Map '%s' is not a holodeck map.\n", orig_mapname);
+		return;
+	}
+
+	// The game prohibits saving on maps with '_' as first character, so that
+	// a player cannot save on holodeck maps for example. To trick it into
+	// saving anyways, we replace that '_' in the mapname. Luckily, there seems
+	// to be a delay in setting the mapname inside of the config string, so
+	// that the original name with the underscore is written to the save file,
+	// while the check for the underscore (which looks at the cvar directly)
+	// already sees the modified name. That is exactly what we need; the check
+	// for being allowed to save is tricked, but the correct map is read when
+	// loading that save.
+	// However, after some delay, the underscore in the config string will be
+	// changed. A holodeck save created afterwards would then have the modified
+	// mapname and could not be loaded. That's why we queue the command
+	// "restore_holodeck_mapname" after saving, which resets "mapname" to the
+	// original name with underscore again.
+
+	char modified_mapname[MAX_QPATH];
+	Q_strncpyz(modified_mapname, orig_mapname, sizeof(modified_mapname));
+	modified_mapname[0] = '-';  // replace the '_' with anything else
+	cgi_Cvar_Set("mapname", modified_mapname);
+
+	cgi_SendConsoleCommand(va("save %s; restore_holodeck_mapname", CG_Argv(1)));
+}
+
+/*
+===================
+CG_RestoreHolodeckMapname_f
+===================
+*/
+void CG_RestoreHolodeckMapname_f (void) {
+	// Undo the modification to the mapname cvar. Because of the delay in
+	// setting the mapname in the config string, we can still obtain the
+	// original name from that and simply set the cvar again, but now back to
+	// that original.
+	const char* info = CG_ConfigString( CS_SERVERINFO );
+	const char* orig_mapname = Info_ValueForKey( info, "mapname" );
+	cgi_Cvar_Set("mapname", orig_mapname);
+}
+
+
 typedef struct {
 	char	*cmd;
 	void	(*function)(void);
@@ -121,6 +175,8 @@ static consoleCommand_t	commands[] = {
 	{ "lock_disable", Lock_Disable },	//player can move now
 	{ "+analysis", CG_AnalysisDown_f },
 	{ "-analysis", CG_AnalysisUp_f },
+	{ "saveholodeck", CG_SaveHolodeck_f },
+	{ "restore_holodeck_mapname", CG_RestoreHolodeckMapname_f },
 };
 
 
