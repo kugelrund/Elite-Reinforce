@@ -3779,6 +3779,7 @@ void UI_MainMenu(void)
 		return;
 	}
 //#endif
+	ingameFlag		= qfalse;
 	holoMatch		= qfalse;
 
 	loadModelFlag	= qfalse;	
