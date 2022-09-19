@@ -248,7 +248,7 @@
     <ClCompile Include="..\speedrun\overbounce_prediction\OverbouncePrediction.cpp" />
     <ClCompile Include="..\speedrun\PlayerOverbouncePrediction.cpp" />
     <ClCompile Include="..\speedrun\strafe_helper\strafe_helper.c" />
-    <ClCompile Include="..\speedrun\strafe_helper_includes.cpp" />
+    <ClCompile Include="..\speedrun\strafe_helper_customization.cpp" />
     <ClCompile Include="..\ui\gameinfo.cpp" />
     <ClCompile Include="AI_Avatar.cpp" />
     <ClCompile Include="AI_Borg.cpp" />
@@ -355,6 +355,7 @@
     <ClInclude Include="..\speedrun\overbounce_prediction\RingBuffer.hpp" />
     <ClInclude Include="..\speedrun\PlayerOverbouncePrediction.hpp" />
     <ClInclude Include="..\speedrun\strafe_helper\strafe_helper.h" />
+    <ClInclude Include="..\speedrun\strafe_helper\strafe_helper_customization.h" />
     <ClInclude Include="..\speedrun\strafe_helper_includes.h" />
     <ClInclude Include="..\ui\gameinfo.h" />
     <ClInclude Include="AI.h" />
