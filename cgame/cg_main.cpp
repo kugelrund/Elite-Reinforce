@@ -8,7 +8,7 @@
 #include "..\speedrun\PlayerOverbouncePrediction.hpp"
 
 //NOTENOTE: Be sure to change the mirrored code in g_shared.h
-typedef	map< string, unsigned char, less<string>, allocator< unsigned char >  >	namePrecache_m;
+typedef	std::map< std::string, unsigned char, std::less<std::string>, std::allocator< unsigned char >  >	namePrecache_m;
 extern namePrecache_m	as_preCacheMap;
 extern void CG_RegisterNPCCustomSounds( clientInfo_t *ci );
 extern qboolean G_AddSexToMunroString ( char *string, qboolean qDoBoth );

@@ -16,7 +16,7 @@ int			numSpawnVarChars;
 char		spawnVarChars[MAX_SPAWN_VARS_CHARS];
 
 //NOTENOTE: Be sure to change the mirrored code in cgmain.cpp
-typedef	map< string, unsigned char, less<string>, allocator< unsigned char >  >	namePrecache_m;
+typedef	std::map< std::string, unsigned char, std::less<std::string>, std::allocator< unsigned char >  >	namePrecache_m;
 namePrecache_m	as_preCacheMap;
 
 qboolean	G_SpawnString( const char *key, const char *defaultString, char **out ) {

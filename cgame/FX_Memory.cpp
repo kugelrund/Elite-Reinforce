@@ -8,8 +8,8 @@
 #define STL_ALLOCLIST( a )	(*a).second.first
 
 //STL typedefs
-typedef list < void * >	void_l;
-typedef	map< size_t, pair< void_l, void_l > >	memoryPair_m;	// size -> ( allocated list, freed list )
+typedef std::list < void * >	void_l;
+typedef	std::map< size_t, std::pair< void_l, void_l > >	memoryPair_m;	// size -> ( allocated list, freed list )
 
 //Main pool listing
 memoryPair_m	poolList;
@@ -87,7 +87,7 @@ void *FXMEM_Allocate( size_t size )
 	}
 
 	//Add an entry	//FIXME: This is NOT a good way to do this
-	pair< void_l, void_l >	dummy;
+	std::pair< void_l, void_l >	dummy;
 	poolList[ size ] = dummy;
 
 	numSlots++;

@@ -9,7 +9,6 @@
 #include <string>
 #include <vector>
 #include <map>
-using namespace std;
 
 #include <windows.h>
 
@@ -264,7 +263,7 @@ protected:
 	char*			m_symbolName;
 };
 
-typedef map<LPCTSTR, CSymbol*, lessstr> symbolmap_t;
+typedef std::map<LPCTSTR, CSymbol*, lessstr> symbolmap_t;
 
 class CDirectiveSymbol : public CSymbol
 {

@@ -7,7 +7,6 @@
 //#define _FXMEM
 
 #include <list>
-using namespace std;
 
 // FXPrimitive flags
 #define	FXF_NONE			0x00000000
