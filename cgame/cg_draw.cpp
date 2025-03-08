@@ -2399,13 +2399,14 @@ CG_DrawStrafeHelper
 ====================
 */
 static void CG_DrawStrafeHelper( void ) {
-	StrafeHelperParams params;
+	StrafeHelperParams params{};
 	params.center = cg_strafeHelperCenter.integer;
 	params.center_marker = cg_strafeHelperCenterMarker.integer;
 	params.scale = cg_strafeHelperScale.value;
 	params.height = cg_strafeHelperHeight.value;
 	params.y = cg_strafeHelperY.value;
 	params.speed_scale = cg_strafeHelperSpeedScale.integer;
+	params.speed_x = 0.0f;
 	params.speed_y = cg_strafeHelperSpeedY.value;
 	StrafeHelper_Draw(&params, SCREEN_WIDTH, SCREEN_HEIGHT);
 }
