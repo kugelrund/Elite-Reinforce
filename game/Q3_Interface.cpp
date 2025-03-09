@@ -20,6 +20,7 @@
 #include "g_roff.h"
 #include "..\cgame\cg_local.h"
 #include "..\game\speakers.h"
+#include "..\speedrun\sound_skipping.hpp"
 
 extern int ICARUS_LinkEntity( int entID, CSequencer *sequencer, CTaskManager *taskManager );
 
@@ -1529,6 +1530,13 @@ static int Q3_PlaySound( int taskID, int entID, const char *name, const char *ch
 		}
 		//Remember we're waiting for this
 		Q3_TaskIDSet( ent, TID_CHAN_VOICE, taskID );
+
+		const int skip_dialogs = gi.Cvar_VariableIntegerValue("g_skipDialogs");
+		if ( skip_dialogs == 1 || (skip_dialogs > 1 && speedrun::IsSoundToSkip(finalName)) )
+		{
+			Q3_TaskIDComplete( ent, TID_CHAN_VOICE );
+		}
+
 		//do not task_return complete
 		return qfalse;
 	}

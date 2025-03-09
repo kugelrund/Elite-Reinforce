@@ -7,6 +7,7 @@
 #include "g_roff.h"
 #include "g_navigator.h"
 #include "anims.h"
+#include "..\speedrun\sound_skipping.hpp"
 
 extern CNavigator		navigator;
 
@@ -317,6 +318,8 @@ void InitGame(  const char *mapname, const char *spawntarget, int checkSum, cons
 	} else {
 		Q3_SetPrecacheFile (va("%s/extra",mapname));
 	}
+
+	speedrun::InitSoundSkipping();
 }
 
 
@@ -465,7 +468,7 @@ void G_CheckTasksCompleted (gentity_t *ent)
 {
 	if ( Q3_TaskIDPending( ent, TID_CHAN_VOICE ) )
 	{
-		if ( !gi.S_Override[ent->s.number] || g_skipDialogs->integer )
+		if ( !gi.S_Override[ent->s.number] )
 		{//not playing a voice sound
 			//return task_complete
 			Q3_TaskIDComplete( ent, TID_CHAN_VOICE );

@@ -247,6 +247,9 @@
     <ClCompile Include="..\Icarus\TaskManager.cpp" />
     <ClCompile Include="..\speedrun\overbounce_prediction\OverbouncePrediction.cpp" />
     <ClCompile Include="..\speedrun\PlayerOverbouncePrediction.cpp" />
+    <ClCompile Include="..\speedrun\sound_skipping.cpp">
+      <LanguageStandard>stdcpp20</LanguageStandard>
+    </ClCompile>
     <ClCompile Include="..\speedrun\strafe_helper\strafe_helper.c" />
     <ClCompile Include="..\speedrun\strafe_helper_customization.cpp" />
     <ClCompile Include="..\ui\gameinfo.cpp" />
@@ -354,6 +357,7 @@
     <ClInclude Include="..\speedrun\overbounce_prediction\OverbouncePrediction.hpp" />
     <ClInclude Include="..\speedrun\overbounce_prediction\RingBuffer.hpp" />
     <ClInclude Include="..\speedrun\PlayerOverbouncePrediction.hpp" />
+    <ClInclude Include="..\speedrun\sound_skipping.hpp" />
     <ClInclude Include="..\speedrun\strafe_helper\strafe_helper.h" />
     <ClInclude Include="..\speedrun\strafe_helper\strafe_helper_customization.h" />
     <ClInclude Include="..\speedrun\strafe_helper_includes.h" />

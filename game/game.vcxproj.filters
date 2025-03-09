@@ -433,6 +433,9 @@
     <ClCompile Include="..\speedrun\strafe_helper_customization.cpp">
       <Filter>speedrun</Filter>
     </ClCompile>
+    <ClCompile Include="..\speedrun\sound_skipping.cpp">
+      <Filter>speedrun</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AI.h">
@@ -607,6 +610,9 @@
       <Filter>speedrun\strafe_helper</Filter>
     </ClInclude>
     <ClInclude Include="..\speedrun\strafe_helper_includes.h">
+      <Filter>speedrun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\speedrun\sound_skipping.hpp">
       <Filter>speedrun</Filter>
     </ClInclude>
   </ItemGroup>
