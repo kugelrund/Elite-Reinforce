@@ -201,6 +201,7 @@ void NPC_AngerSound(void);
 void NPC_Spawn( gentity_t *self );
 
 //NPC_stats
+bool NPC_ShouldShowPath( gentity_t* self );
 int NPC_ReactionTime ( void );
 qboolean NPC_ParseParms( const char *NPCName, gentity_t *NPC );
 void NPC_LoadParms( void );

@@ -29,6 +29,24 @@ char	*TeamNames[TEAM_NUM_TEAMS] =
 	"player (not valid)"
 };
 
+bool NPC_ShouldShowPath( gentity_t* self )
+{
+	if ( Q_stricmp( "all", g_showPaths->string ) == 0 )
+	{
+		return true;
+	}
+	if ( self->client->playerTeam >= 0 && self->client->playerTeam < TEAM_NUM_TEAMS &&
+		 strstr( g_showPaths->string, TeamNames[self->client->playerTeam] ) != NULL )
+	{
+		return true;
+	}
+	if ( self->targetname != NULL && strstr( g_showPaths->string, self->targetname ) != NULL )
+	{
+		return true;
+	}
+	return false;
+}
+
 /*
 NPC_ReactionTime
 */

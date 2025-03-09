@@ -911,6 +911,19 @@ int	NAV_MoveToGoal( gentity_t *self, navInfo_t &info )
 		navigator.ShowPath( self->waypoint, self->NPC->goalEntity->waypoint );
 	}
 
+	if ( NPC_ShouldShowPath( self ) )
+	{
+		navigator.ShowPath( bestNode, self->NPC->goalEntity->waypoint, true );
+
+		vec3_t	dest;
+		navigator.GetNodePosition( self->NPC->goalEntity->waypoint, dest );
+		if ( DistanceSquared( dest, self->NPC->goalEntity->currentOrigin ) > 0.1 )
+		{
+			CG_DrawNode( dest, NODE_NAVGOAL );
+			CG_DrawEdge( dest, self->NPC->goalEntity->currentOrigin, EDGE_PATH );
+		}
+	}
+
 	return bestNode;
 }
 

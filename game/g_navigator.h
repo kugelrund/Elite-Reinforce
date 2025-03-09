@@ -142,7 +142,7 @@ public:
 
 	void ShowNodes( void );
 	void ShowEdges( void );
-	void ShowPath( int start, int end );
+	void ShowPath( int start, int end, bool draw_nodes = false );
 
 	int GetNearestNode( gentity_t *ent, int lastID, int flags );
 

@@ -2035,6 +2035,30 @@ qboolean NPC_FindLocalEnemies( gentity_t *self, vec3_t lookVec )
 }
 
 
+static void NPC_ShowFormationPath(void)
+{
+	if (NPCInfo->curSegNextWp != -1 && NPCInfo->destSegLastWp != -1 && NPCInfo->destSegLastWp != NPCInfo->curSegNextWp)
+	{
+		squadPath_t	*squadPath = &squadPaths[NPCInfo->iSquadPathIndex];
+		squadRoute_t *route = &squadRoutes[NPCInfo->iSquadPathIndex];
+		int i = NPCInfo->curSegNextWp;
+		CG_DrawEdge( NPC->currentOrigin, squadPath->waypoints[i].origin, EDGE_PATH );
+		do {
+			const int i_previous = i;
+			i = route->nextSquadPoint[i_previous][NPCInfo->destSegLastWp];
+			CG_DrawNode( squadPath->waypoints[i].origin, NODE_NAVGOAL );
+			CG_DrawEdge( squadPath->waypoints[i_previous].origin, squadPath->waypoints[i].origin, EDGE_PATH );
+		} while (i != NPCInfo->destSegLastWp);
+		CG_DrawEdge( squadPath->waypoints[i].origin, NPCInfo->sPDestPos, EDGE_PATH );
+	}
+	else
+	{
+		CG_DrawEdge( NPC->currentOrigin, NPCInfo->sPDestPos, EDGE_PATH );
+	}
+	CG_DrawNode( NPCInfo->sPDestPos, NODE_GOAL );
+}
+
+
 /*
 -------------------------
 NPC_BSFormation
@@ -2235,6 +2259,11 @@ void NPC_BSFormation(void)
 				{//head for our next
 					goalWp = NPCInfo->curSegNextWp;
 				}
+			}
+
+			if ( NPC_ShouldShowPath( NPC ) )
+			{
+				NPC_ShowFormationPath();
 			}
 
 			angles[PITCH] = angles[ROLL] = 0;

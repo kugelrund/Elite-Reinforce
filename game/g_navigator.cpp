@@ -1224,7 +1224,7 @@ ShowPath
 -------------------------
 */
 
-void CNavigator::ShowPath( int start, int end )
+void CNavigator::ShowPath( int start, int end, bool draw_nodes )
 {	
 	//Validate the start position
 	if ( ( start < 0 ) || ( start > m_nodes.size() ) )
@@ -1266,6 +1266,10 @@ void CNavigator::ShowPath( int start, int end )
 		
 		//Draw the edge
 		CG_DrawEdge( startPos, endPos, EDGE_PATH );
+		if ( draw_nodes )
+		{
+			CG_DrawNode( startPos, NODE_NAVGOAL );
+		}
 
 		//Take a new best node
 		moveNode = testNode;

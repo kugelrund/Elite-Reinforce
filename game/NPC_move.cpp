@@ -173,6 +173,14 @@ qboolean NPC_GetMoveDirection( vec3_t out, float *distance )
 		frameNavInfo.flags |= NIF_MACRO_NAV;
 	}
 
+	if ( NPC_ShouldShowPath( NPC ) )
+	{
+		vec3_t short_term_destination;
+		VectorMA( NPC->currentOrigin, frameNavInfo.distance, frameNavInfo.direction, short_term_destination );
+		CG_DrawEdge( NPC->currentOrigin, short_term_destination, EDGE_PATH );
+		CG_DrawNode( NPCInfo->goalEntity->currentOrigin, NODE_GOAL );
+	}
+
 	//Avoid any collisions on the way
 	if ( NAV_AvoidCollision( NPC, NPCInfo->goalEntity, frameNavInfo ) == qfalse )
 	{

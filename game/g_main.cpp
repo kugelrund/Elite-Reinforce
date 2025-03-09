@@ -43,6 +43,7 @@ cvar_t	*g_skipDialogs;
 cvar_t	*g_teamKnockback;
 cvar_t	*g_fixFreezeBorg1;
 cvar_t	*g_snapVelocity;
+cvar_t	*g_showPaths;
 
 qboolean	stop_icarus = qfalse;
 
@@ -167,6 +168,7 @@ void G_InitCvars( void ) {
 	g_teamKnockback = gi.cvar( "g_teamKnockback", "0", CVAR_CHEAT );
 	g_fixFreezeBorg1 = gi.cvar( "g_fixFreezeBorg1", "1", CVAR_ARCHIVE );
 	g_snapVelocity = gi.cvar( "g_snapVelocity", "1", CVAR_CHEAT );
+	g_showPaths = gi.cvar( "g_showPaths", "", CVAR_ARCHIVE );
 }
 
 /*
