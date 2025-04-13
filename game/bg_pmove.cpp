@@ -213,7 +213,7 @@ static void PM_Accelerate( vec3_t wishdir, float wishspeed, float accel )
 	float		addspeed, accelspeed, currentspeed;
 
 	if (pm->ps->clientNum == 0) {
-		StrafeHelper_SetAccelerationValues(pml.forward, pm->ps->velocity, wishdir,
+		StrafeHelper_SetAccelerationValues(pm->ps->velocity, wishdir,
 		                                   wishspeed, accel, pml.frametime);
 	}
 
