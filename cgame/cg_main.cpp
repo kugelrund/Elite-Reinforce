@@ -119,6 +119,7 @@ vmCvar_t	cg_virtualVoyager;
 vmCvar_t	cg_missionInfoFlashTime;
 
 // Additions for Elite Reinforce
+vmCvar_t	cg_highlightDeathScripts;
 vmCvar_t	cg_drawOverbounceInfo;
 vmCvar_t	cg_drawStrafeHelper;
 vmCvar_t	cg_strafeHelperCenter;
@@ -204,6 +205,7 @@ cvarTable_t		cvarTable[] = {
 	{ &cg_missionInfoFlashTime, "cg_missionInfoFlashTime", "15000", CVAR_ARCHIVE  },
 	
 	// Additions for Elite Reinforce
+	{ &cg_highlightDeathScripts, "cg_highlightDeathScripts", "NONE", CVAR_ARCHIVE },
 	{ &cg_drawOverbounceInfo, "cg_drawOverbounceInfo", "0", CVAR_ARCHIVE },
 	{ &cg_drawStrafeHelper, "cg_drawStrafeHelper", "0", CVAR_ARCHIVE },
 	{ &cg_strafeHelperCenter, "cg_strafeHelperCenter", "1", CVAR_ARCHIVE },

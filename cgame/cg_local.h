@@ -599,6 +599,7 @@ extern	vmCvar_t		cg_virtualVoyager;
 extern	vmCvar_t		cg_missionInfoFlashTime;
 
 // Additions for Elite Reinforce
+extern	vmCvar_t		cg_highlightDeathScripts;
 extern	vmCvar_t		cg_drawOverbounceInfo;
 extern	vmCvar_t		cg_drawStrafeHelper;
 extern	vmCvar_t		cg_strafeHelperCenter;

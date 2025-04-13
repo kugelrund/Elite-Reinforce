@@ -3246,6 +3246,11 @@ void CG_Player( centity_t *cent ) {
 	legs.renderfx = renderfx;
 	VectorCopy (legs.origin, legs.oldorigin);	// don't positionally lerp at all
 
+	if ( cent->gent && cent->gent->target && strstr( cent->gent->target, cg_highlightDeathScripts.string ) )
+	{
+		cent->currentState.powerups |= (1<<PW_BORG_SHIELD);
+	}
+
 	CG_AddRefEntityWithPowerups( &legs, cent->currentState.powerups&~(1<<PW_DISINT_6), cent->gent );
 
 	// if the model failed, allow the default nullmodel to be displayed
