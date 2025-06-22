@@ -31,6 +31,12 @@ char	*TeamNames[TEAM_NUM_TEAMS] =
 
 bool NPC_ShouldShowPath( gentity_t* self )
 {
+	extern qboolean CG_CanDraw();
+	if (!CG_CanDraw())
+	{
+		return false;
+	}
+
 	if ( Q_stricmp( "all", g_showPaths->string ) == 0 )
 	{
 		return true;

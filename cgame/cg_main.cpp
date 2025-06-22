@@ -1429,6 +1429,11 @@ void CG_Shutdown( void )
 }
 
 //// DEBUG STUFF
+qboolean CG_CanDraw()
+{
+	return cg.frametime > 0;
+}
+
 /*
 -------------------------
 CG_DrawNode
