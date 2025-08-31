@@ -31,14 +31,14 @@ And so to ensure compatibility with that behaviour, important physics code like 
 
 Unfortunately, the history of the actual changes in the Quake 3 code does not seem to be available, so we can only speculate what the early versions might have looked like exactly.
 But it does not seem unreasonable to assume that early on Quake 3 had been using the same `SnapVector` macro for the velocity snapping in `bg_pmove.c` that Elite Force uses.
-In fact that macro does still exist in the released version of the Quake 3 source code ([`Quake-III-Arena/game/q_shared.h#L646`](https://github.com/id-Software/Quake-III-Arena/blob/dbe4ddb10315479fc00086f08e25d968b4b43c49/code/game/q_shared.h#L646)), but it is only used in other contexts.
+In fact that macro does still exist in the released version of the Quake 3 source code ([Quake-III-Arena/game/q_shared.h#L646](https://github.com/id-Software/Quake-III-Arena/blob/dbe4ddb10315479fc00086f08e25d968b4b43c49/code/game/q_shared.h#L646)), but it is only used in other contexts.
 
 So with Elite Force being released in September of 2000, it seems likely that the version of the Quake 3 engine that Raven was working with did not have the `trap_SnapVector` version yet and instead used the simple `SnapVector` macro.
 And since the singleplayer of Elite Force does not use the Quake Virtual Machine at all and instead only runs the game modules as native DLLs, this would get it the standard behaviour for casting `float` to `int`, which is rounding towards zero.
 
 ## After Elite Force
 
-Starting with the Jedi Outcast singleplayer, Raven got rid of the `SnapVector` call ([jedioutcast/code/game/bg_pmove.cpp](https://github.com/kugelrund/Speed-Outcast/blob/1963e9b17e0b3b897bb44a0bc4901a8cad007ff4/code/game/bg_pmove.cpp#L9038)).
+Starting with the Jedi Outcast singleplayer, Raven got rid of the `SnapVector` call ([jedioutcast/code/game/bg_pmove.cpp#L9038](https://github.com/kugelrund/Speed-Outcast/blob/1963e9b17e0b3b897bb44a0bc4901a8cad007ff4/code/game/bg_pmove.cpp#L9038)).
 The code comment ([Quake-III-Arena/code/game/bg_pmove.c#L2014](https://github.com/id-Software/Quake-III-Arena/blob/dbe4ddb10315479fc00086f08e25d968b4b43c49/code/game/bg_pmove.c#L2014)) right above the velocity snapping explains that the intent of it in Quake 3 was to save bandwidth, which really did not matter for the singleplayer, so supposedly Raven decided to remove it.
 So the singleplayer of both Jedi Outcast and Jedi Academy have no form of velocity snapping or snap zones at all.
 
