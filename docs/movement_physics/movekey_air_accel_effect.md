@@ -46,7 +46,7 @@ On the other hand, additional vertical inputs do not influence the resulting `wi
 So jump inputs do not change the potential for acceleration.
 This is why there is no need to exactly time your jump in Elite Force, players can buffer as much as they like without losing acceleration potential.
 
-Funnily enough, `scale` is still computed at the start of `PM_AirMove` ([stvoyef/game/bg_pmove.cpp#L622](https://github.com/kugelrund/Elite-Reinforce/blob/04e0e618d1ee57a2919f1a852a688c03b1aa155d/game/bg_pmove.cpp#L604)), but remains unused in the function.
+Funnily enough, `scale` is still computed at the start of `PM_AirMove` ([stvoyef/game/bg_pmove.cpp#L604](https://github.com/kugelrund/Elite-Reinforce/blob/04e0e618d1ee57a2919f1a852a688c03b1aa155d/game/bg_pmove.cpp#L604)), but remains unused in the function.
 Also worth noting is that for all other movement functions, Elite Force mirrors Quake 3's `wishspeed` exactly.
 For `PM_WalkMove` for example, both Elite Force ([stvoyef/game/bg_pmove.cpp#L717](https://github.com/kugelrund/Elite-Reinforce/blob/04e0e618d1ee57a2919f1a852a688c03b1aa155d/game/bg_pmove.cpp#L717)) and Quake 3 ([Quake-III-Arena/code/game/bg_pmove.c#L750](https://github.com/id-Software/Quake-III-Arena/blob/dbe4ddb10315479fc00086f08e25d968b4b43c49/code/game/bg_pmove.c#L750)) do have the scaling.
 So the behaviour for prestrafes on the ground is actually the same and the difference only shows while in the air.
