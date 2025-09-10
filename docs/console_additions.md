@@ -3,7 +3,7 @@
 
 ## Gameplay Modifications
 
-### Variables
+Variables:
 
 - `g_fixFreezeBorg1` (0 or 1)
   Allows to avoid the freze that happens in `borg1` when dropping down from the vents.
@@ -27,7 +27,7 @@
   **Cheat protected**.
   Default: `0`.
 
-### Commands
+Commands:
 
 - `saveholodeck <filename>`
 
@@ -36,7 +36,7 @@
 
 ## Strafe Helper
 
-### Variables
+Variables:
 
 - `cg_drawStrafeHelper` (0 or 1)
 
@@ -83,7 +83,7 @@
 
 ## Scripted Behavior Information
 
-### Variables
+Variables:
 
 - `cg_highlightDeathScripts` (scriptname)
 
